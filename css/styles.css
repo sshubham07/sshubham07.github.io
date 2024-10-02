@@ -105,4 +105,26 @@ footer {
     color: white; /* Change hover text color to white */
     background-color: rgba(255, 255, 255, 0.1); /* Optional: Light background on hover */
 }
+.card-title {
+    font-size: 1.25rem; /* Adjust the font size */
+    font-weight: bold;  /* Make the text bold */
+    color: #ffffff;     /* White color for the text */
+    text-transform: uppercase; /* Uppercase text */
+    margin-bottom: 15px; /* Space below the title */
+    position: relative; /* Position for pseudo-element */
+}
+
+.card-title::after {
+    content: ""; /* Pseudo-element for underline */
+    display: block;
+    width: 50%; /* Width of the underline */
+    height: 2px; /* Height of the underline */
+    background: #ffffff; /* Color of the underline */
+    margin-top: 5px; /* Space above the underline */
+    margin-left: 0; /* Align to the left */
+}
+
+.profile-logo.white-logo {
+    filter: brightness(0) invert(1); /* Make the logo white */
+}
 
