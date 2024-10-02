@@ -4,23 +4,158 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css"> <!-- Link to your external CSS -->
 </head>
 <body>
     <header>
         <h1>Welcome to My Portfolio</h1>
+        <p>Your one-stop destination to know more about me!</p>
     </header>
-    <section>
-        <h2>About Me</h2>
-        <p>This is where you write a little about yourself.</p>
-    </section>
-    <section>
-        <h2>Projects</h2>
-        <ul>
-            <li><a href="#">Project 1</a></li>
-            <li><a href="#">Project 2</a></li>
-        </ul>
-    </section>
+
+    <div class="container">
+        <!-- <section>
+            <h2 style="margin-left: 140px;">About Me</h2>
+            <img src="images/my-photo.jpg" alt="My Photo" class="profile-pic">
+            <p>This is where you write a little about yourself. Mention your skills, interests, and goals.</p>
+        </section> -->
+        <section>
+            <h2 style="margin-left: 140px;">About Me</h2>
+            <div style="display: flex; align-items: center;">
+                <img src="images/my-photo.jpg" alt="My Photo" class="profile-pic">
+                <div style="margin-left: 20px; font-size: 16px; color: white;">
+                    <span id="dynamic-text"></span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Projects</h2>
+            <div class="row">
+                <div class="col-md-4 project-card">
+                    <div class="card">
+                        <img src="path/to/project1-image.jpg" class="card-img-top" alt="Project 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Project 1</h5>
+                            <p class="card-text">A brief description of what this project is about.</p>
+                            <a href="#" class="btn btn-primary">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 project-card">
+                    <div class="card">
+                        <img src="path/to/project2-image.jpg" class="card-img-top" alt="Project 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Project 2</h5>
+                            <p class="card-text">A brief description of what this project is about.</p>
+                            <a href="#" class="btn btn-primary">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more project cards as needed -->
+            </div>
+        </section>
+
+        <section>
+            <h2>Skills</h2>
+            <div class="skills-container">
+                <div class="skill">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/python.svg" alt="Python Logo" class="skill-logo white-logo">
+                    <p>Python</p>
+                </div>
+                <div class="skill">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/cplusplus.svg" alt="C++ Logo" class="skill-logo white-logo">
+                    <p>C++</p>
+                </div>
+                <div class="skill">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/django.svg" alt="Django Logo" class="skill-logo white-logo">
+                    <p>Django</p>
+                </div>
+                <div class="skill">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/flask.svg" alt="Flask Logo" class="skill-logo white-logo">
+                    <p>Flask</p>
+                </div>
+                <div class="skill">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/fastapi.svg" alt="FastAPI Logo" class="skill-logo white-logo">
+                    <p>FastAPI</p>
+                </div>
+                <div class="skill">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/mysql.svg" alt="MySQL Logo" class="skill-logo white-logo">
+                    <p>MySQL</p>
+                </div>
+                <div class="skill">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/pandas.svg" alt="Pandas Logo" class="skill-logo white-logo">
+                    <p>Pandas</p>
+                </div>
+                <div class="skill">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/numpy.svg" alt="NumPy Logo" class="skill-logo white-logo">
+                    <p>NumPy</p>
+                </div>
+                <div class="skill">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/html5.svg" alt="HTML Logo" class="skill-logo white-logo">
+                    <p>HTML</p>
+                </div>
+                <div class="skill">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/css3.svg" alt="CSS Logo" class="skill-logo white-logo">
+                    <p>CSS</p>
+                </div>
+                <div class="skill">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/javascript.svg" alt="JavaScript Logo" class="skill-logo white-logo">
+                    <p>JavaScript</p>
+                </div>
+            </div>
+        </section>
+        
+        
+        
+        
+        
+
+        <section>
+            <h2>Contact Me</h2>
+            <form>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Your Email">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea class="form-control" id="message" rows="3" placeholder="Your Message"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Your Name. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        const text = "Hello!!, I'm Shubham Kumar Gupta, a backend developer at Codvo.ai with 1.5 years of experience in Django, Flask, and FastAPI, exploring other cool technologies. I love building projects that solve real-world problems.";
+        let index = 0;
+        const speed = 10; // Adjust typing speed (in milliseconds)
+    
+        function type() {
+            if (index < text.length) {
+                document.getElementById("dynamic-text").innerHTML += text.charAt(index);
+                index++;
+                setTimeout(type, speed);
+            }
+        }
+    
+        // Start typing effect on page load
+        window.onload = type;
+    </script>
 </body>
 </html>

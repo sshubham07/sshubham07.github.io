@@ -1,52 +1,99 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
+    background-color: #121212; /* Dark background */
+    color: #ffffff; /* White text for contrast */
+    font-family: 'Roboto', sans-serif; /* Modern font */
 }
 
 header {
-    background: #333;
-    color: #fff;
-    padding: 20px;
+    background-color: #000000; /* Black header */
+    color: #ffffff;
+    padding: 20px 0;
     text-align: center;
 }
 
 header h1 {
-    margin: 0;
-    font-size: 2.5rem;
+    font-family: 'Montserrat', sans-serif; /* Bold font for the title */
+    font-size: 2.5em; /* Increased title size */
+    margin-bottom: 10px; /* Space below title */
+}
+
+header p {
+    font-size: 1.2em; /* Subtitle size */
+    font-weight: 400; /* Regular weight */
 }
 
 section {
-    margin: 20px auto;
-    padding: 20px;
-    max-width: 800px;
-    background: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
 }
 
-section h2 {
-    color: #333;
-    font-size: 1.8rem;
+h2 {
+    font-family: 'Montserrat', sans-serif; /* Bold font for section headings */
+    font-size: 1.8em; /* Section heading size */
+    margin-bottom: 15px; /* Space below section heading */
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
+.project-card {
+    margin: 10px;
 }
 
-ul li {
-    margin-bottom: 10px;
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #000000; /* Black footer */
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
 
-a {
-    color: #3498db;
-    text-decoration: none;
+.card {
+    background-color: #1f1f1f; /* Darker card background */
+    color: #ffffff; /* White text in cards */
+    border: none; /* Remove card border */
 }
 
-a:hover {
-    text-decoration: underline;
+.btn-primary {
+    background-color: #333333; /* Darker button color */
+    border-color: #333333; /* Button border color */
+    font-weight: 500; /* Medium button font */
+}
+
+.btn-primary:hover {
+    background-color: #555555; /* Button hover color */
+    border-color: #555555; /* Button hover border color */
+}
+
+.list-group-item {
+    background-color: transparent; /* Transparent background for list items */
+    border: 1px solid #444444; /* Subtle border */
+    color: #ffffff; /* White text for list items */
+}
+.skills-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping to the next line if there's not enough space */
+    justify-content: center; /* Center the skills */
+    margin: 20px 0; /* Space above and below */
+}
+
+.skill {
+    text-align: center; /* Center text under logos */
+    margin: 15px; /* Space between skill items */
+    flex: 0 1 120px; /* Allow skill items to grow/shrink and set a base width */
+}
+
+.skill-logo {
+    width: 60px; /* Set a width for the logos */
+    height: 60px; /* Set a height for the logos */
+    margin-bottom: 8px; /* Space below logos */
+}
+.white-logo {
+    filter: invert(1); /* Invert colors to make logos white */
+    width: 60px; /* Ensure consistent size */
+    height: 60px; /* Ensure consistent size */
+}
+.profile-pic {
+    width: 400px; /* Increased width */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 50%; /* Make it circular */
+    margin-bottom: 20px; /* Space below the image */
 }
