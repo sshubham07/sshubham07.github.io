@@ -97,3 +97,12 @@ footer {
     border-radius: 50%; /* Make it circular */
     margin-bottom: 20px; /* Space below the image */
 }
+.navbar-nav .nav-link {
+    transition: color 0.3s ease; /* Smooth transition for hover */
+}
+
+.navbar-nav .nav-link:hover {
+    color: white; /* Change hover text color to white */
+    background-color: rgba(255, 255, 255, 0.1); /* Optional: Light background on hover */
+}
+
