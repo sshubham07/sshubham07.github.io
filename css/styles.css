@@ -68,6 +68,7 @@ footer {
     border: 1px solid #444444; /* Subtle border */
     color: #ffffff; /* White text for list items */
 }
+
 .skills-container {
     display: flex;
     flex-wrap: wrap; /* Allow wrapping to the next line if there's not enough space */
@@ -86,17 +87,21 @@ footer {
     height: 60px; /* Set a height for the logos */
     margin-bottom: 8px; /* Space below logos */
 }
-.white-logo {
-    filter: invert(1); /* Invert colors to make logos white */
+
+.white-logo,
+.contact-icon {
+    filter: invert(1); /* Make logos white */
     width: 60px; /* Ensure consistent size */
     height: 60px; /* Ensure consistent size */
 }
+
 .profile-pic {
     width: 400px; /* Increased width */
     height: auto; /* Maintain aspect ratio */
     border-radius: 50%; /* Make it circular */
     margin-bottom: 20px; /* Space below the image */
 }
+
 .navbar-nav .nav-link {
     transition: color 0.3s ease; /* Smooth transition for hover */
 }
@@ -105,10 +110,11 @@ footer {
     color: white; /* Change hover text color to white */
     background-color: rgba(255, 255, 255, 0.1); /* Optional: Light background on hover */
 }
+
 .card-title {
     font-size: 1.25rem; /* Adjust the font size */
-    font-weight: bold;  /* Make the text bold */
-    color: #ffffff;     /* White color for the text */
+    font-weight: bold; /* Make the text bold */
+    color: #ffffff; /* White color for the text */
     text-transform: uppercase; /* Uppercase text */
     margin-bottom: 15px; /* Space below the title */
     position: relative; /* Position for pseudo-element */
@@ -124,21 +130,16 @@ footer {
     margin-left: 0; /* Align to the left */
 }
 
-.profile-logo.white-logo {
-    filter: brightness(0) invert(1); /* Make the logo white */
-}
 .contact-icons {
     margin-top: 20px;
+    display: flex; /* Use flexbox to keep icons in a row */
+    justify-content: center; /* Center the icons */
 }
 
 .contact-icon {
     width: 50px;
     height: 50px;
-    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-}
-
-.white-icon {
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(360deg) brightness(200%) contrast(100%);
+    transition: transform 0.3s, filter 0.3s;
 }
 
 .contact-icon:hover {
@@ -146,3 +147,9 @@ footer {
     opacity: 0.8;
 }
 
+.contact-link {
+    margin: 0 10px; /* Space between icons */
+}
+.white-icon {
+    color: white; /* Set the icon color to white */
+}
