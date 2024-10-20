@@ -100,6 +100,7 @@ footer {
     height: auto; /* Maintain aspect ratio */
     border-radius: 50%; /* Make it circular */
     margin-bottom: 20px; /* Space below the image */
+
 }
 
 .navbar-nav .nav-link {
@@ -153,3 +154,39 @@ footer {
 .white-icon {
     color: white; /* Set the icon color to white */
 }
+.skill-logo:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s;
+}
+.project-card:hover .card {
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+.about-section {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    justify-content: center; /* Center the content on small screens */
+    text-align: center; /* Center the text */
+}
+
+.text-container {
+    font-size: 16px;
+    color: white;
+    margin-left: 20px;
+    max-width: 100%;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .about-section {
+        flex-direction: column; /* Stack the items vertically */
+    }
+
+    .text-container {
+        margin-left: 0; /* Remove the left margin for centered text */
+    }
+}
+
+

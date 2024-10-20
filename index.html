@@ -31,16 +31,17 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#projects">Projects</a>
                     </li>
-                    <li class="nav-item"></li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#coding-profiles">Coding Profiles</a>
                     </li>
-                    <li class="nav-item"></li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#experience">Experience</a>
                     </li>
-                    <li class="nav-item"></li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#contact">Contact Me</a>
                     </li>
                 </ul>
+                
             </div>
         </div>
     </nav>
@@ -54,12 +55,13 @@
         </section> -->
         <section id="about">
             <h2 >About Me</h2>
-            <div style="display: flex; align-items: center;">
+            <div class="about-section">
                 <img src="images/my-photo.JPG" alt="My Photo" class="profile-pic">
-                <div style="margin-left: 20px; font-size: 16px; color: white;">
-                    <span id="dynamic-text"></span>
+                <div class="text-container">
+                    <span>Hello!! I'm Shubham Kumar Gupta, a backend developer at Codvo.ai with 2 years of experience in Django, Flask, and FastAPI. I'm passionate about exploring cutting-edge technologies and building projects that solve real-world problems. I've also tackled over 1000+ DSA challenges, which keeps my problem-solving skills sharp!
+                    </span>
                 </div>
-            </div>
+            </div>            
         </section>
 
         <section id="skills">
@@ -286,9 +288,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
     <script>
-        const text = "Hello!! I'm Shubham Kumar Gupta, a backend developer at Codvo.ai with 1.5 years of experience in Django, Flask, and FastAPI. I'm passionate about exploring cutting-edge technologies and building projects that solve real-world problems. I've also tackled over 1000+ DSA challenges, which keeps my problem-solving skills sharp!";
+        const text = "Hello!! I'm Shubham Kumar Gupta, a backend developer at Codvo.ai with 2 years of experience in Django, Flask, and FastAPI. I'm passionate about exploring cutting-edge technologies and building projects that solve real-world problems. I've also tackled over 1000+ DSA challenges, which keeps my problem-solving skills sharp!";
+        
         let index = 0;
-        const speed = 20; // Adjust typing speed (in milliseconds)
+        const speed = 0; // Adjust typing speed (in milliseconds)
     
         function type() {
             if (index < text.length) {
