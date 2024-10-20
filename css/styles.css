@@ -188,5 +188,149 @@ footer {
         margin-left: 0; /* Remove the left margin for centered text */
     }
 }
+/* Coding Profiles Section */
+.coding-profiles-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Allows wrapping if screen is small */
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.coding-card {
+    background-color: #2b2b2b;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    text-align: center;
+    width: 200px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.coding-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.coding-card a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    padding: 15px;
+}
+
+.coding-logo {
+    width: 80px;
+    height: 80px;
+    margin: 10px auto;
+    display: block;
+}
+
+.coding-card-body {
+    padding: 10px 0;
+}
+
+.coding-card-title {
+    font-size: 18px;
+    color: #f0f0f0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .coding-card {
+        width: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .coding-profiles-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .coding-card {
+        width: 100%;
+    }
+}
+/* Global Container for Consistent Alignment */
+.container {
+    max-width: 1200px;
+    margin: 0 auto; /* Center aligns the container */
+    padding: 0 20px; /* Adds padding on both sides for smaller screens */
+}
+
+/* Coding Profiles Section */
+#coding-profiles {
+    padding-left: 20px; /* Ensure this matches the padding or margin used in other sections */
+    padding-right: 20px;
+}
+
+.coding-profiles-container {
+    display: flex;
+    justify-content: flex-start; /* Aligns items to the left */
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.coding-card {
+    background-color: #2b2b2b;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    text-align: center;
+    width: 200px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.coding-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.coding-card a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    padding: 15px;
+}
+
+.coding-logo {
+    width: 80px;
+    height: 80px;
+    margin: 10px auto;
+    display: block;
+}
+
+.coding-card-body {
+    padding: 10px 0;
+}
+
+.coding-card-title {
+    font-size: 18px;
+    color: #f0f0f0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .coding-card {
+        width: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .coding-profiles-container {
+        flex-direction: column;
+        align-items: flex-start; /* Aligns items to the left on smaller screens */
+    }
+
+    .coding-card {
+        width: 100%;
+    }
+}
+
+
 
 
