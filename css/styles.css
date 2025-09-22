@@ -176,6 +176,15 @@ footer {
     color: white;
     margin-left: 20px;
     max-width: 100%;
+     /* New styles for better look */
+    line-height: 1.6;                 /* Improves readability */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  /* Modern font */
+    background: rgba(255, 255, 255, 0.05);  /* subtle translucent background */
+    padding: 15px 20px;                /* Adds breathing space */
+    border-left: 4px solid #00bcd4;    /* Accent line for style */
+    border-radius: 8px;                /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);  /* Depth effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  /* hover effect */
 }
 
 /* Media queries for responsiveness */
