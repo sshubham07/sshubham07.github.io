@@ -3,334 +3,382 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shubham Gupta Portfolio</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css"> <!-- Link to your external CSS -->
+    <meta name="description" content="Shubham Kumar Gupta — Backend Engineer specializing in distributed systems, microservices, and AI-powered applications.">
+    <title>Shubham Kumar Gupta — Backend Engineer</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
+
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <!-- <header>
-        <h1>Welcome to My Portfolio</h1>
-        <p>Your one-stop destination to know more about me!</p>
-    </header> -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+    <!-- Animated background layers -->
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="bg-orb bg-orb--1" aria-hidden="true"></div>
+    <div class="bg-orb bg-orb--2" aria-hidden="true"></div>
+    <div class="bg-noise" aria-hidden="true"></div>
+
+    <!-- Scroll progress bar -->
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+    <!-- Navbar -->
+    <header class="nav" id="nav">
+        <div class="nav__inner">
+            <a href="#hero" class="nav__brand">
+                <span class="nav__brand-bracket">&lt;</span>SKG<span class="nav__brand-bracket">/&gt;</span>
+            </a>
+            <nav class="nav__links" id="navLinks">
+                <a href="#about" class="nav__link">About</a>
+                <a href="#skills" class="nav__link">Skills</a>
+                <a href="#projects" class="nav__link">Projects</a>
+                <a href="#experience" class="nav__link">Experience</a>
+                <a href="#profiles" class="nav__link">Profiles</a>
+                <a href="#contact" class="nav__link nav__link--cta">Contact</a>
+            </nav>
+            <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About Me</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#skills">Skills</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#coding-profiles">Coding Profiles</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#experience">Experience</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact Me</a>
-                    </li>
-                </ul>
-                
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="hero" class="hero">
+        <div class="hero__content">
+            <div class="hero__badge reveal">
+                <span class="hero__badge-dot"></span> Available for backend &amp; distributed systems roles
+            </div>
+            <h1 class="hero__title reveal">
+                Shubham Kumar<br><span class="hero__title-accent">Gupta</span>
+            </h1>
+            <div class="hero__role reveal">
+                <span class="hero__role-prompt">$</span>
+                <span id="typedRole" class="hero__role-text"></span><span class="hero__cursor">▋</span>
+            </div>
+            <p class="hero__tagline reveal">
+                I build <strong>scalable backends</strong> and <strong>distributed systems</strong> that stay fast under load —
+                and I bring <strong>LLMs, RAG &amp; vector search</strong> to production.
+            </p>
+            <div class="hero__cta reveal">
+                <a href="#projects" class="btn btn--primary"><i class="fas fa-rocket"></i> View Projects</a>
+                <a href="https://drive.google.com/file/d/1Ub_r9_SZnv_PBY9gSkmfLOwtNbCpjzyK/view" target="_blank" rel="noopener" class="btn btn--ghost"><i class="fas fa-file-alt"></i> Resume</a>
+            </div>
+            <div class="hero__socials reveal">
+                <a href="https://github.com/sshubham07" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/shubham-kumar-gupta-25a028182/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://leetcode.com/u/shubhamkumargupta2_gmail_com/" target="_blank" rel="noopener" aria-label="LeetCode"><i class="fas fa-code"></i></a>
+                <a href="mailto:shubhamkumargupta2@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
             </div>
         </div>
-    </nav>
-    
-    
-    <div class="container">
-        <!-- <section>
-            <h2 style="margin-left: 140px;">About Me</h2>
-            <img src="images/my-photo.jpg" alt="My Photo" class="profile-pic">
-            <p>This is where you write a little about yourself. Mention your skills, interests, and goals.</p>
-        </section> -->
-        <section id="about">
-            <h2 >About Me</h2>
-            <div class="about-section">
-                <img src="images/my-photo.JPG" alt="My Photo" class="profile-pic">
-                <div class="text-container">
-                       <p>Hi, I’m <strong>Shubham Kumar Gupta</strong>, a backend developer at <strong>Codvo.ai</strong> with over 2.5 years of experience in <span class="highlight">Django</span>, <span class="highlight">Flask</span>, and <span class="highlight">FastAPI</span>. I explore <span class="highlight">LLMs</span>, <span class="highlight">RAG</span>, and <span class="highlight">Vector DBs</span>, turning curiosity into intelligent, real-world solutions.</p>
 
-                </div>
-            </div>            
-        </section>
-
-        <section id="skills">
-            <h2>Skills</h2>
-            <div class="skills-container">
-                <div class="skill">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/python.svg" alt="Python Logo" class="skill-logo white-logo">
-                    <p>Python</p>
-                </div>
-                <div class="skill">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/openaigym.svg" 
-                        alt="LLM Logo" 
-                        class="skill-logo white-logo">
-                    <p>LLMs</p>
-                </div>
-                <!-- GenAI -->
-                <div class="skill">
-                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/readthedocs.svg" 
-                    alt="RAG Logo" 
-                    class="skill-logo white-logo">
-                <p>RAG</p>
-                </div>
-        <!-- Vector DBs -->
-                <div class="skill">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/databricks.svg" 
-                        alt="Vector DBs Logo" 
-                        class="skill-logo white-logo">
-                    <p>Vector DBs</p>
-                </div>
-                <div class="skill">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/django.svg" alt="Django Logo" class="skill-logo white-logo">
-                    <p>Django</p>
-                </div>
-                <div class="skill">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/flask.svg" alt="Flask Logo" class="skill-logo white-logo">
-                    <p>Flask</p>
-                </div>
-                <div class="skill">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/fastapi.svg" alt="FastAPI Logo" class="skill-logo white-logo">
-                    <p>FastAPI</p>
-                </div>
-                <div class="skill">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/mysql.svg" alt="MySQL Logo" class="skill-logo white-logo">
-                    <p>MySQL</p>
-                </div>
-                <div class="skill">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/pandas.svg" alt="Pandas Logo" class="skill-logo white-logo">
-                    <p>Pandas</p>
-                </div>
-                <div class="skill">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/numpy.svg" alt="NumPy Logo" class="skill-logo white-logo">
-                    <p>NumPy</p>
-                </div>
-                <div class="skill">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/html5.svg" alt="HTML Logo" class="skill-logo white-logo">
-                    <p>HTML</p>
-                </div>
-                <div class="skill">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/css3.svg" alt="CSS Logo" class="skill-logo white-logo">
-                    <p>CSS</p>
-                </div>
-                <div class="skill">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/javascript.svg" alt="JavaScript Logo" class="skill-logo white-logo">
-                    <p>JavaScript</p>
-                </div>
+        <!-- Terminal card -->
+        <div class="hero__terminal reveal">
+            <div class="terminal__bar">
+                <span class="terminal__dot terminal__dot--red"></span>
+                <span class="terminal__dot terminal__dot--yellow"></span>
+                <span class="terminal__dot terminal__dot--green"></span>
+                <span class="terminal__title">shubham@gruve: ~/whoami</span>
             </div>
-        </section>
-        
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3 project-card">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">StudyBuddy</h5>
-                                <p class="card-text">a dynamic website, empowering users to curate and host discussion rooms tailored to specific topics</p>
-                                <a href="https://github.com/sshubham07/StudyBud" class="btn btn-primary">View Source Code</a>
-                            </div>
-                        </div>
+            <pre class="terminal__body"><code><span class="tok-c">$</span> <span class="tok-cmd">cat</span> engineer.json
+{
+  <span class="tok-k">"name"</span>: <span class="tok-s">"Shubham Kumar Gupta"</span>,
+  <span class="tok-k">"role"</span>: <span class="tok-s">"Backend Engineer @ Gruve.ai"</span>,
+  <span class="tok-k">"experience"</span>: <span class="tok-n">3</span>,
+  <span class="tok-k">"stack"</span>: [<span class="tok-s">"Python"</span>, <span class="tok-s">"FastAPI"</span>, <span class="tok-s">"Django"</span>],
+  <span class="tok-k">"systems"</span>: [<span class="tok-s">"Kafka"</span>, <span class="tok-s">"Redis"</span>, <span class="tok-s">"Docker"</span>],
+  <span class="tok-k">"focus"</span>: <span class="tok-s">"Distributed Systems &amp; GenAI"</span>,
+  <span class="tok-k">"dsa_solved"</span>: <span class="tok-n">1000</span>
+}
+<span class="tok-c">$</span> <span class="tok-cmd">./deploy</span> --scale <span class="tok-blink">▋</span></code></pre>
+        </div>
+
+        <a href="#about" class="hero__scroll" aria-label="Scroll down">
+            <span class="hero__scroll-mouse"></span>
+        </a>
+    </section>
+
+    <main>
+        <!-- About -->
+        <section id="about" class="section">
+            <div class="section__head reveal">
+                <span class="section__index">01</span>
+                <h2 class="section__title">About Me</h2>
+            </div>
+            <div class="about">
+                <div class="about__photo reveal">
+                    <div class="about__photo-frame">
+                        <img src="images/my-photo.JPG" alt="Shubham Kumar Gupta">
                     </div>
-                    <div class="col-md-3 project-card">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">The MidNight Times</h5>
-                                <p class="card-text">Fetches and displays news articles from various sources based on user search.</p>
-                                <a href="https://github.com/sshubham07/the-midnight-times" class="btn btn-primary">View Source Code</a>
-                            </div>
+                </div>
+                <div class="about__body reveal">
+                    <p>
+                        Hi, I'm <strong>Shubham Kumar Gupta</strong> — a Backend Engineer at
+                        <span class="grad-text">Gruve.ai</span> with <strong>3+ years</strong> of experience designing
+                        APIs and services in <span class="grad-text">Django</span>, <span class="grad-text">Flask</span>,
+                        and <span class="grad-text">FastAPI</span>.
+                    </p>
+                    <p>
+                        I care about the hard parts of backend engineering: <strong>distributed systems</strong>,
+                        <strong>event-driven architecture with Kafka</strong>, <strong>caching with Redis</strong>,
+                        <strong>containerization with Docker</strong>, and building <strong>async microservices</strong>
+                        that scale. I also ship <span class="grad-text">LLM</span>, <span class="grad-text">RAG</span>,
+                        and <span class="grad-text">Vector DB</span> features into real products.
+                    </p>
+                    <div class="stats">
+                        <div class="stat">
+                            <span class="stat__num" data-target="3" data-suffix="+">0</span>
+                            <span class="stat__label">Years Experience</span>
                         </div>
-                    </div>
-                    <div class="col-md-3 project-card">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">FastAPI Todo APP</h5>
-                                <p class="card-text">Fullstack Todo APP with proper JWT authentication, test module, and CRUD operations funtionality.</p>
-                                <a href="https://github.com/sshubham07/FastApi" class="btn btn-primary">View Source Code</a>
-                            </div>
+                        <div class="stat">
+                            <span class="stat__num" data-target="1000" data-suffix="+">0</span>
+                            <span class="stat__label">DSA Problems Solved</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat__num" data-target="4" data-suffix="">0</span>
+                            <span class="stat__label">Companies Shipped At</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat__num" data-target="15" data-suffix="+">0</span>
+                            <span class="stat__label">Technologies</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        
-        <section id="coding-profiles">
-            <h2>Coding Profiles</h2>
-            <div class="coding-profiles-container">
-                <div class="coding-card">
-                    <a href="https://leetcode.com/u/shubhamkumargupta2_gmail_com/" target="_blank">
-                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/leetcode.svg" alt="LeetCode Logo" class="coding-logo">
-                        <div class="coding-card-body">
-                            <h5 class="coding-card-title">LeetCode</h5>
-                        </div>
+
+        <!-- Skills -->
+        <section id="skills" class="section">
+            <div class="section__head reveal">
+                <span class="section__index">02</span>
+                <h2 class="section__title">Skills &amp; Systems</h2>
+            </div>
+
+            <div class="skills-grid">
+                <!-- Backend & Distributed Systems -->
+                <div class="skill-cat reveal">
+                    <h3 class="skill-cat__title"><i class="fas fa-server"></i> Backend &amp; Distributed Systems</h3>
+                    <div class="chips">
+                        <span class="chip chip--hot"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/apachekafka.svg" alt="" class="chip__ico"> Kafka</span>
+                        <span class="chip chip--hot"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/redis.svg" alt="" class="chip__ico"> Redis</span>
+                        <span class="chip chip--hot"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/docker.svg" alt="" class="chip__ico"> Docker</span>
+                        <span class="chip chip--hot"><i class="fas fa-network-wired"></i> Distributed Systems</span>
+                        <span class="chip chip--hot"><i class="fas fa-cubes"></i> Microservices</span>
+                        <span class="chip chip--hot"><i class="fas fa-bolt"></i> Async / Concurrency</span>
+                        <span class="chip"><i class="fas fa-stream"></i> Event-Driven Arch</span>
+                        <span class="chip"><i class="fas fa-exchange-alt"></i> REST APIs</span>
+                    </div>
+                </div>
+
+                <!-- Languages & Frameworks -->
+                <div class="skill-cat reveal">
+                    <h3 class="skill-cat__title"><i class="fas fa-code"></i> Languages &amp; Frameworks</h3>
+                    <div class="chips">
+                        <span class="chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/python.svg" alt="" class="chip__ico"> Python</span>
+                        <span class="chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/fastapi.svg" alt="" class="chip__ico"> FastAPI</span>
+                        <span class="chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/django.svg" alt="" class="chip__ico"> Django</span>
+                        <span class="chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/flask.svg" alt="" class="chip__ico"> Flask</span>
+                        <span class="chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/javascript.svg" alt="" class="chip__ico"> JavaScript</span>
+                        <span class="chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/html5.svg" alt="" class="chip__ico"> HTML5</span>
+                        <span class="chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/css3.svg" alt="" class="chip__ico"> CSS3</span>
+                    </div>
+                </div>
+
+                <!-- AI / ML -->
+                <div class="skill-cat reveal">
+                    <h3 class="skill-cat__title"><i class="fas fa-brain"></i> AI / GenAI</h3>
+                    <div class="chips">
+                        <span class="chip"><i class="fas fa-robot"></i> LLMs</span>
+                        <span class="chip"><i class="fas fa-book-open"></i> RAG</span>
+                        <span class="chip"><i class="fas fa-vector-square"></i> Vector DBs</span>
+                        <span class="chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/pandas.svg" alt="" class="chip__ico"> Pandas</span>
+                        <span class="chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/numpy.svg" alt="" class="chip__ico"> NumPy</span>
+                    </div>
+                </div>
+
+                <!-- Data & Cloud -->
+                <div class="skill-cat reveal">
+                    <h3 class="skill-cat__title"><i class="fas fa-database"></i> Data &amp; Cloud</h3>
+                    <div class="chips">
+                        <span class="chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/mysql.svg" alt="" class="chip__ico"> MySQL</span>
+                        <span class="chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/amazonaws.svg" alt="" class="chip__ico"> AWS</span>
+                        <span class="chip"><i class="fas fa-eye"></i> CloudWatch</span>
+                        <span class="chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/git.svg" alt="" class="chip__ico"> Git</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proficiency bars -->
+            <div class="proficiency reveal">
+                <div class="prof">
+                    <div class="prof__head"><span>Backend &amp; API Design</span><span class="prof__pct">92%</span></div>
+                    <div class="prof__track"><div class="prof__fill" data-fill="92"></div></div>
+                </div>
+                <div class="prof">
+                    <div class="prof__head"><span>Distributed Systems &amp; Microservices</span><span class="prof__pct">85%</span></div>
+                    <div class="prof__track"><div class="prof__fill" data-fill="85"></div></div>
+                </div>
+                <div class="prof">
+                    <div class="prof__head"><span>Kafka / Redis / Docker</span><span class="prof__pct">88%</span></div>
+                    <div class="prof__track"><div class="prof__fill" data-fill="88"></div></div>
+                </div>
+                <div class="prof">
+                    <div class="prof__head"><span>GenAI · LLMs · RAG</span><span class="prof__pct">80%</span></div>
+                    <div class="prof__track"><div class="prof__fill" data-fill="80"></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="section">
+            <div class="section__head reveal">
+                <span class="section__index">03</span>
+                <h2 class="section__title">Featured Projects</h2>
+            </div>
+            <div class="projects">
+                <article class="pcard reveal">
+                    <div class="pcard__top">
+                        <i class="fas fa-comments pcard__icon"></i>
+                        <a href="https://github.com/sshubham07/StudyBud" target="_blank" rel="noopener" class="pcard__link" aria-label="StudyBuddy source"><i class="fab fa-github"></i></a>
+                    </div>
+                    <h3 class="pcard__title">StudyBuddy</h3>
+                    <p class="pcard__desc">A dynamic platform empowering users to create and host topic-based discussion rooms with real-time collaboration.</p>
+                    <div class="pcard__tags">
+                        <span>Django</span><span>WebSockets</span><span>MySQL</span>
+                    </div>
+                </article>
+
+                <article class="pcard reveal">
+                    <div class="pcard__top">
+                        <i class="fas fa-newspaper pcard__icon"></i>
+                        <a href="https://github.com/sshubham07/the-midnight-times" target="_blank" rel="noopener" class="pcard__link" aria-label="Midnight Times source"><i class="fab fa-github"></i></a>
+                    </div>
+                    <h3 class="pcard__title">The Midnight Times</h3>
+                    <p class="pcard__desc">Aggregates and serves news articles from multiple sources based on user search, with async fetching.</p>
+                    <div class="pcard__tags">
+                        <span>Python</span><span>Async</span><span>REST API</span>
+                    </div>
+                </article>
+
+                <article class="pcard reveal">
+                    <div class="pcard__top">
+                        <i class="fas fa-check-double pcard__icon"></i>
+                        <a href="https://github.com/sshubham07/FastApi" target="_blank" rel="noopener" class="pcard__link" aria-label="FastAPI Todo source"><i class="fab fa-github"></i></a>
+                    </div>
+                    <h3 class="pcard__title">FastAPI Todo</h3>
+                    <p class="pcard__desc">Full-stack Todo service with JWT authentication, complete CRUD operations and a tested API layer.</p>
+                    <div class="pcard__tags">
+                        <span>FastAPI</span><span>JWT</span><span>Pytest</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section id="experience" class="section">
+            <div class="section__head reveal">
+                <span class="section__index">04</span>
+                <h2 class="section__title">Experience</h2>
+            </div>
+            <div class="timeline">
+                <div class="tl-item reveal">
+                    <div class="tl-item__dot"></div>
+                    <div class="tl-item__card">
+                        <div class="tl-item__meta"><span class="tl-item__role">Software Development Engineer 2</span><span class="tl-item__date">Feb 2026 — Present</span></div>
+                        <div class="tl-item__co">Gruve.ai</div>
+                        <p>Deployed on <strong>Pulse AI</strong> — an AI-powered platform that turns operational signals into real-time, actionable intelligence. Build and scale the async, event-driven backend services that power its insight pipeline.</p>
+                    </div>
+                </div>
+                <div class="tl-item reveal">
+                    <div class="tl-item__dot"></div>
+                    <div class="tl-item__card">
+                        <div class="tl-item__meta"><span class="tl-item__role">Backend Developer</span><span class="tl-item__date">Jun 2024 — Feb 2026</span></div>
+                        <div class="tl-item__co">Codvo.ai</div>
+                        <p>Led root-cause analysis for customer issues in the purchase flow using AWS CloudWatch, identifying and shipping effective fixes for production-critical services.</p>
+                    </div>
+                </div>
+                <div class="tl-item reveal">
+                    <div class="tl-item__dot"></div>
+                    <div class="tl-item__card">
+                        <div class="tl-item__meta"><span class="tl-item__role">Software Engineer</span><span class="tl-item__date">Oct 2023 — May 2024</span></div>
+                        <div class="tl-item__co">Advarisk</div>
+                        <p>Drove the 'Advasmart' project, digitizing real-estate collateral processes for banks and streamlining verification workflows.</p>
+                    </div>
+                </div>
+                <div class="tl-item reveal">
+                    <div class="tl-item__dot"></div>
+                    <div class="tl-item__card">
+                        <div class="tl-item__meta"><span class="tl-item__role">Trainee Developer</span><span class="tl-item__date">Oct 2022 — Sep 2023</span></div>
+                        <div class="tl-item__co">Velocis Systems</div>
+                        <p>Built an internal tool to monitor employee software installations and automate email alerting, reducing manual audits.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Coding Profiles -->
+        <section id="profiles" class="section">
+            <div class="section__head reveal">
+                <span class="section__index">05</span>
+                <h2 class="section__title">Coding Profiles</h2>
+            </div>
+            <div class="profiles">
+                <a href="https://leetcode.com/u/shubhamkumargupta2_gmail_com/" target="_blank" rel="noopener" class="profile-card reveal">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/leetcode.svg" alt="" class="profile-card__ico">
+                    <span>LeetCode</span>
+                </a>
+                <a href="https://www.geeksforgeeks.org/user/shubhamkumargupta2/" target="_blank" rel="noopener" class="profile-card reveal">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/geeksforgeeks.svg" alt="" class="profile-card__ico">
+                    <span>GeeksforGeeks</span>
+                </a>
+                <a href="https://www.hackerrank.com/profile/shubhamkumargup2" target="_blank" rel="noopener" class="profile-card reveal">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/hackerrank.svg" alt="" class="profile-card__ico">
+                    <span>HackerRank</span>
+                </a>
+                <a href="https://platform.stratascratch.com/user/shubham007" target="_blank" rel="noopener" class="profile-card reveal">
+                    <span class="profile-card__ico profile-card__ico--text">S</span>
+                    <span>StrataScratch</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="section">
+            <div class="section__head reveal">
+                <span class="section__index">06</span>
+                <h2 class="section__title">Get In Touch</h2>
+            </div>
+            <div class="contact reveal">
+                <p class="contact__lead">Building something that needs to scale? Let's talk.</p>
+                <div class="contact__grid">
+                    <a href="mailto:shubhamkumargupta2@gmail.com" class="contact__item">
+                        <i class="fas fa-envelope"></i><span>Email</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/shubham-kumar-gupta-25a028182/" target="_blank" rel="noopener" class="contact__item">
+                        <i class="fab fa-linkedin"></i><span>LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/sshubham07" target="_blank" rel="noopener" class="contact__item">
+                        <i class="fab fa-github"></i><span>GitHub</span>
+                    </a>
+                    <a href="tel:+918825254403" class="contact__item">
+                        <i class="fas fa-phone"></i><span>Call</span>
+                    </a>
+                    <a href="https://drive.google.com/file/d/1Ub_r9_SZnv_PBY9gSkmfLOwtNbCpjzyK/view" target="_blank" rel="noopener" class="contact__item">
+                        <i class="fas fa-file-alt"></i><span>Resume</span>
                     </a>
                 </div>
-                <div class="coding-card">
-                    <a href="https://www.geeksforgeeks.org/user/shubhamkumargupta2/" target="_blank">
-                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/geeksforgeeks.svg" alt="GeeksforGeeks Logo" class="coding-logo">
-                        <div class="coding-card-body">
-                            <h5 class="coding-card-title">GeeksforGeeks</h5>
-                        </div>
-                    </a>
-                </div>
-                <div class="coding-card">
-                    <a href="https://www.hackerrank.com/profile/shubhamkumargup2" target="_blank">
-                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/hackerrank.svg" alt="HackerRank Logo" class="coding-logo">
-                        <div class="coding-card-body">
-                            <h5 class="coding-card-title">HackerRank</h5>
-                        </div>
-                    </a>
-                </div>
-                <div class="coding-card">
-                    <a href="https://platform.stratascratch.com/user/shubham007" target="_blank">
-                        <!-- Bold black "S" icon, bigger and slightly lower -->
-                        <svg class="coding-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="black">
-                            <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="22">S</text>
-                        </svg>
-                        <div class="coding-card-body">
-                            <h5 class="coding-card-title">Stratascratch</h5>
-                        </div>
-                    </a>
-                </div>
-
-
-
-
-
-
-
-
             </div>
         </section>
-        
-        <section id="experience">
-            <h2>Experience</h2>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Backend Developer</h5>
-                                <p class="card-text"><strong>Codvo.ai</strong></p>
-                                <p class="card-text">June 2024 - Present</p>
-                                <p class="card-text">Led RCA for customer issues during the purchase process using AWS CloudWatch,
-                                    identified and implemented effective solutions</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Software Engineer</h5>
-                                <p class="card-text"><strong>Advarisk</strong></p>
-                                <p class="card-text">Oct 2023 - May 2024</p>
-                                <p class="card-text">Led pivotal efforts in the 'Advasmart' project, driving the digitization of real estate collateral processes for banks.
-                                    </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Trainee Developer</h5>
-                                <p class="card-text"><strong>Velocis Systems</strong></p>
-                                <p class="card-text">Oct 2022 - Sept 2023</p>
-                                <p class="card-text">Developed a project for monitoring internal employees’ software installations and automating email alerts
-                                    </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
+    </main>
 
-        <section id="contact">
-            <h2>Contact Me</h2>
-            <div class="container">
-                <div class="row justify-content-center align-items-center text-center">
-                    <!-- Email Icon -->
-                    <div class="col-2 col-sm-1 m-2">
-                        <a href="mailto:shubhamkumargupta2@gmail.com" target="_blank" class="contact-link">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/gmail.svg" alt="Email Logo" class="contact-icon">
-                        </a>
-                    </div>
-                    <!-- LinkedIn Icon -->
-                    <div class="col-2 col-sm-1 m-2">
-                        <a href="https://www.linkedin.com/in/shubham-kumar-gupta-25a028182/" target="_blank" class="contact-link">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/linkedin.svg" alt="LinkedIn Logo" class="contact-icon">
-                        </a>
-                    </div>
-                    <!-- GitHub Icon -->
-                    <div class="col-2 col-sm-1 m-2">
-                        <a href="https://github.com/sshubham07" target="_blank" class="contact-link">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/github.svg" alt="GitHub Logo" class="contact-icon">
-                        </a>
-                    </div>
-                    <!-- Phone Icon -->
-                    <div class="col-2 col-sm-1 m-2 text-center">
-                        <a href="tel:+918825254403" class="contact-link">
-                            <i class="fas fa-phone fa-3x white-icon"></i>
-                        </a>
-                    </div>
-                    <!-- Resume Download Icon -->
-                    <!-- <div class="col-2 col-sm-1 m-2">
-                        <a href="documents/Shubham_Gupta_Resume.pdf" download="Shubham_Gupta_Resume.pdf" class="contact-link">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/adobeacrobatreader.svg" alt="Download Resume" class="contact-icon">
-                        </a>
-                    </div> -->
-                    <div class="col-2 col-sm-1 m-2 text-center">
-                        <a href="https://drive.google.com/file/d/1Ub_r9_SZnv_PBY9gSkmfLOwtNbCpjzyK/view" download="Shubham_Gupta_Resume.pdf" class="contact-link">
-                            <i class="fas fa-file-alt fa-2x white-icon"></i> <!-- Document icon -->
-                            <span style="color: white; margin-left: 5px text-center;">Download Resume</span> <!-- Text for clarity -->
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        
-        
-        
-        
-    </div>
-
-    <footer>
-        <!-- <p>&copy; 2024 Your Name. All Rights Reserved.</p> -->
+    <footer class="footer">
+        <p>Designed &amp; built by <strong>Shubham Kumar Gupta</strong> · <span id="year"></span></p>
+        <p class="footer__note">Backend Engineer · Distributed Systems · GenAI</p>
     </footer>
 
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
-    <script>
-        const text = "Hello!! I'm Shubham Kumar Gupta, a backend developer at Codvo.ai with 2 years of experience in Django, Flask, and FastAPI. I'm passionate about exploring cutting-edge technologies and building projects that solve real-world problems. I've also tackled over 1000+ DSA challenges, which keeps my problem-solving skills sharp!";
-        
-        let index = 0;
-        const speed = 0; // Adjust typing speed (in milliseconds)
-    
-        function type() {
-            if (index < text.length) {
-                document.getElementById("dynamic-text").innerHTML += text.charAt(index);
-                index++;
-                setTimeout(type, speed);
-            }
-        }
-    
-        // Start typing effect on page load
-        window.onload = type;
-    </script>
 </body>
 </html>
