@@ -3,8 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Shubham Kumar Gupta — Backend Engineer specializing in distributed systems, microservices, and AI-powered applications.">
-    <title>Shubham Kumar Gupta — Backend Engineer</title>
+    <meta name="description" content="Shubham Kumar Gupta — SDE-2 at Gruve.ai building distributed systems, microservices, and production GenAI applications with LLMs, RAG and LangGraph.">
+    <title>Shubham Kumar Gupta — SDE-2 · Backend &amp; GenAI</title>
+
+    <meta name="theme-color" content="#0a0b0f">
+    <link rel="canonical" href="https://sshubham07.github.io/">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+    <!-- Link previews (LinkedIn, WhatsApp, X) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sshubham07.github.io/">
+    <meta property="og:title" content="Shubham Kumar Gupta — SDE-2 · Backend &amp; GenAI Engineer">
+    <meta property="og:description" content="SDE-2 at Gruve.ai. Python microservices, Kubernetes, distributed systems and production GenAI (RAG, LangGraph, pgvector).">
+    <meta property="og:image" content="https://sshubham07.github.io/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Shubham Kumar Gupta — SDE-2 · Backend &amp; GenAI Engineer">
+    <meta name="twitter:image" content="https://sshubham07.github.io/images/og-image.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,6 +38,8 @@
     <div class="bg-orb bg-orb--1" aria-hidden="true"></div>
     <div class="bg-orb bg-orb--2" aria-hidden="true"></div>
     <div class="bg-noise" aria-hidden="true"></div>
+    <canvas class="bg-net" id="netCanvas" aria-hidden="true"></canvas>
+    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
     <!-- Scroll progress bar -->
     <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
@@ -37,9 +55,11 @@
                 <a href="#skills" class="nav__link">Skills</a>
                 <a href="#projects" class="nav__link">Projects</a>
                 <a href="#experience" class="nav__link">Experience</a>
+                <a href="#education" class="nav__link">Education</a>
                 <a href="#profiles" class="nav__link">Profiles</a>
                 <a href="#contact" class="nav__link nav__link--cta">Contact</a>
             </nav>
+            <button class="nav__kbd" id="paletteOpen" aria-label="Open command menu"><kbd>⌘</kbd><kbd>K</kbd></button>
             <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation">
                 <span></span><span></span><span></span>
             </button>
@@ -50,7 +70,7 @@
     <section id="hero" class="hero">
         <div class="hero__content">
             <div class="hero__badge reveal">
-                <span class="hero__badge-dot"></span> Available for backend &amp; distributed systems roles
+                <span class="hero__badge-dot"></span> Open to Backend &amp; GenAI engineering roles
             </div>
             <h1 class="hero__title reveal">
                 Shubham Kumar<br><span class="hero__title-accent">Gupta</span>
@@ -61,11 +81,11 @@
             </div>
             <p class="hero__tagline reveal">
                 I build <strong>scalable backends</strong> and <strong>distributed systems</strong> that stay fast under load —
-                and I bring <strong>LLMs, RAG &amp; vector search</strong> to production.
+                and ship <strong>GenAI</strong> to production with <strong>LLMs, RAG, LangGraph agents &amp; vector search</strong>.
             </p>
             <div class="hero__cta reveal">
                 <a href="#projects" class="btn btn--primary"><i class="fas fa-rocket"></i> View Projects</a>
-                <a href="https://drive.google.com/file/d/1Ub_r9_SZnv_PBY9gSkmfLOwtNbCpjzyK/view" target="_blank" rel="noopener" class="btn btn--ghost"><i class="fas fa-file-alt"></i> Resume</a>
+                <a href="https://drive.google.com/file/d/19_RhvogvO401x6xOO7PbsNGkXWMxYwpz/view?usp=sharing" target="_blank" rel="noopener" class="btn btn--ghost"><i class="fas fa-file-alt"></i> Resume</a>
             </div>
             <div class="hero__socials reveal">
                 <a href="https://github.com/sshubham07" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
@@ -81,25 +101,38 @@
                 <span class="terminal__dot terminal__dot--red"></span>
                 <span class="terminal__dot terminal__dot--yellow"></span>
                 <span class="terminal__dot terminal__dot--green"></span>
-                <span class="terminal__title">shubham@gruve: ~/whoami</span>
+                <span class="terminal__title">shubham@portfolio:~</span>
             </div>
-            <pre class="terminal__body"><code><span class="tok-c">$</span> <span class="tok-cmd">cat</span> engineer.json
+            <div class="terminal__body" id="term">
+                <div class="terminal__out" id="termOut"><pre><span class="tok-c">$</span> <span class="tok-cmd">cat</span> engineer.json
 {
   <span class="tok-k">"name"</span>: <span class="tok-s">"Shubham Kumar Gupta"</span>,
-  <span class="tok-k">"role"</span>: <span class="tok-s">"Backend Engineer @ Gruve.ai"</span>,
+  <span class="tok-k">"role"</span>: <span class="tok-s">"SDE-2 @ Gruve.ai"</span>,
   <span class="tok-k">"experience"</span>: <span class="tok-n">3</span>,
   <span class="tok-k">"stack"</span>: [<span class="tok-s">"Python"</span>, <span class="tok-s">"FastAPI"</span>, <span class="tok-s">"Django"</span>],
-  <span class="tok-k">"systems"</span>: [<span class="tok-s">"Kafka"</span>, <span class="tok-s">"Redis"</span>, <span class="tok-s">"Docker"</span>],
-  <span class="tok-k">"focus"</span>: <span class="tok-s">"Distributed Systems &amp; GenAI"</span>,
-  <span class="tok-k">"dsa_solved"</span>: <span class="tok-n">1000</span>
-}
-<span class="tok-c">$</span> <span class="tok-cmd">./deploy</span> --scale <span class="tok-blink">▋</span></code></pre>
+  <span class="tok-k">"systems"</span>: [<span class="tok-s">"Kubernetes"</span>, <span class="tok-s">"Redis"</span>, <span class="tok-s">"Docker"</span>],
+  <span class="tok-k">"focus"</span>: [<span class="tok-s">"Distributed Systems"</span>, <span class="tok-s">"GenAI"</span>],
+  <span class="tok-k">"dsa_solved"</span>: <span class="tok-n">1100</span>
+}</pre><p class="term-hint">Try it: type <span class="tok-cmd">help</span> and press Enter.</p></div>
+                <form class="terminal__prompt" id="termForm" autocomplete="off">
+                    <label for="termInput" class="tok-c">$</label>
+                    <input id="termInput" type="text" spellcheck="false" autocapitalize="off" aria-label="Terminal command" placeholder="help">
+                </form>
+            </div>
         </div>
 
         <a href="#about" class="hero__scroll" aria-label="Scroll down">
             <span class="hero__scroll-mouse"></span>
         </a>
     </section>
+
+    <!-- Tech marquee -->
+    <div class="marquee" aria-hidden="true">
+        <div class="marquee__track">
+            <span>Python</span><span>FastAPI</span><span>Django</span><span>Kafka</span><span>Redis</span><span>Docker</span><span>LangGraph</span><span>LLMs</span><span>RAG</span><span>pgvector</span><span>Microservices</span><span>AWS</span>
+            <span>Python</span><span>FastAPI</span><span>Django</span><span>Kafka</span><span>Redis</span><span>Docker</span><span>LangGraph</span><span>LLMs</span><span>RAG</span><span>pgvector</span><span>Microservices</span><span>AWS</span>
+        </div>
+    </div>
 
     <main>
         <!-- About -->
@@ -111,12 +144,12 @@
             <div class="about">
                 <div class="about__photo reveal">
                     <div class="about__photo-frame">
-                        <img src="images/my-photo.JPG" alt="Shubham Kumar Gupta">
+                        <img src="images/my-photo-small.jpg" alt="Shubham Kumar Gupta" width="608" height="800" loading="lazy">
                     </div>
                 </div>
                 <div class="about__body reveal">
                     <p>
-                        Hi, I'm <strong>Shubham Kumar Gupta</strong> — a Backend Engineer at
+                        Hi, I'm <strong>Shubham Kumar Gupta</strong> — an <strong>SDE-2</strong> at
                         <span class="grad-text">Gruve.ai</span> with <strong>3+ years</strong> of experience designing
                         APIs and services in <span class="grad-text">Django</span>, <span class="grad-text">Flask</span>,
                         and <span class="grad-text">FastAPI</span>.
@@ -125,25 +158,29 @@
                         I care about the hard parts of backend engineering: <strong>distributed systems</strong>,
                         <strong>event-driven architecture with Kafka</strong>, <strong>caching with Redis</strong>,
                         <strong>containerization with Docker</strong>, and building <strong>async microservices</strong>
-                        that scale. I also ship <span class="grad-text">LLM</span>, <span class="grad-text">RAG</span>,
-                        and <span class="grad-text">Vector DB</span> features into real products.
+                        that scale.</p>
+                    <p>
+                        On the <span class="grad-text">GenAI</span> side, I build production-grade LLM systems —
+                        <span class="grad-text">RAG</span> pipelines with hybrid search and reranking,
+                        <span class="grad-text">LangGraph</span> orchestration, <span class="grad-text">Vector DBs</span>,
+                        and evaluation-driven retrieval — so AI features stay grounded, observable and reliable.
                     </p>
                     <div class="stats">
                         <div class="stat">
-                            <span class="stat__num" data-target="3" data-suffix="+">0</span>
-                            <span class="stat__label">Years Experience</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat__num" data-target="1000" data-suffix="+">0</span>
+                            <span class="stat__num" data-target="1100" data-suffix="+">0</span>
                             <span class="stat__label">DSA Problems Solved</span>
                         </div>
                         <div class="stat">
-                            <span class="stat__num" data-target="4" data-suffix="">0</span>
-                            <span class="stat__label">Companies Shipped At</span>
+                            <span class="stat__num" data-target="0.93" data-decimals="2" data-suffix="">0</span>
+                            <span class="stat__label">Recall@5 on NyayaAI RAG</span>
                         </div>
                         <div class="stat">
-                            <span class="stat__num" data-target="15" data-suffix="+">0</span>
-                            <span class="stat__label">Technologies</span>
+                            <span class="stat__num" data-target="9" data-suffix="+">0</span>
+                            <span class="stat__label">Playwright E2E Suites Shipped</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat__num" data-target="300" data-suffix="+">0</span>
+                            <span class="stat__label">Employees on Alerts I Built</span>
                         </div>
                     </div>
                 </div>
@@ -165,6 +202,7 @@
                         <span class="chip chip--hot"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/apachekafka.svg" alt="" class="chip__ico"> Kafka</span>
                         <span class="chip chip--hot"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/redis.svg" alt="" class="chip__ico"> Redis</span>
                         <span class="chip chip--hot"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/docker.svg" alt="" class="chip__ico"> Docker</span>
+                        <span class="chip chip--hot"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/kubernetes.svg" alt="" class="chip__ico"> Kubernetes</span>
                         <span class="chip chip--hot"><i class="fas fa-network-wired"></i> Distributed Systems</span>
                         <span class="chip chip--hot"><i class="fas fa-cubes"></i> Microservices</span>
                         <span class="chip chip--hot"><i class="fas fa-bolt"></i> Async / Concurrency</span>
@@ -181,6 +219,7 @@
                         <span class="chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/fastapi.svg" alt="" class="chip__ico"> FastAPI</span>
                         <span class="chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/django.svg" alt="" class="chip__ico"> Django</span>
                         <span class="chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/flask.svg" alt="" class="chip__ico"> Flask</span>
+                        <span class="chip chip--hot"><i class="fas fa-diagram-project"></i> LangGraph</span>
                         <span class="chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/javascript.svg" alt="" class="chip__ico"> JavaScript</span>
                         <span class="chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/html5.svg" alt="" class="chip__ico"> HTML5</span>
                         <span class="chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/css3.svg" alt="" class="chip__ico"> CSS3</span>
@@ -189,11 +228,13 @@
 
                 <!-- AI / ML -->
                 <div class="skill-cat reveal">
-                    <h3 class="skill-cat__title"><i class="fas fa-brain"></i> AI / GenAI</h3>
+                    <h3 class="skill-cat__title"><i class="fas fa-brain"></i> GenAI &amp; ML</h3>
                     <div class="chips">
                         <span class="chip"><i class="fas fa-robot"></i> LLMs</span>
                         <span class="chip"><i class="fas fa-book-open"></i> RAG</span>
                         <span class="chip"><i class="fas fa-vector-square"></i> Vector DBs</span>
+                        <span class="chip"><i class="fas fa-layer-group"></i> Hybrid Search &amp; Reranking</span>
+                        <span class="chip"><i class="fas fa-vial"></i> RAG Evaluation</span>
                         <span class="chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/pandas.svg" alt="" class="chip__ico"> Pandas</span>
                         <span class="chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/numpy.svg" alt="" class="chip__ico"> NumPy</span>
                     </div>
@@ -203,6 +244,7 @@
                 <div class="skill-cat reveal">
                     <h3 class="skill-cat__title"><i class="fas fa-database"></i> Data &amp; Cloud</h3>
                     <div class="chips">
+                        <span class="chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/postgresql.svg" alt="" class="chip__ico"> PostgreSQL · pgvector</span>
                         <span class="chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/mysql.svg" alt="" class="chip__ico"> MySQL</span>
                         <span class="chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/amazonaws.svg" alt="" class="chip__ico"> AWS</span>
                         <span class="chip"><i class="fas fa-eye"></i> CloudWatch</span>
@@ -211,23 +253,22 @@
                 </div>
             </div>
 
-            <!-- Proficiency bars -->
-            <div class="proficiency reveal">
-                <div class="prof">
-                    <div class="prof__head"><span>Backend &amp; API Design</span><span class="prof__pct">92%</span></div>
-                    <div class="prof__track"><div class="prof__fill" data-fill="92"></div></div>
+            <!-- Live activity -->
+            <div class="activity reveal">
+                <div class="activity__head">
+                    <h3><i class="fas fa-signal"></i> Live activity</h3>
+                    <span class="activity__note">Pulled from GitHub &amp; LeetCode, not self-rated</span>
                 </div>
-                <div class="prof">
-                    <div class="prof__head"><span>Distributed Systems &amp; Microservices</span><span class="prof__pct">85%</span></div>
-                    <div class="prof__track"><div class="prof__fill" data-fill="85"></div></div>
-                </div>
-                <div class="prof">
-                    <div class="prof__head"><span>Kafka / Redis / Docker</span><span class="prof__pct">88%</span></div>
-                    <div class="prof__track"><div class="prof__fill" data-fill="88"></div></div>
-                </div>
-                <div class="prof">
-                    <div class="prof__head"><span>GenAI · LLMs · RAG</span><span class="prof__pct">80%</span></div>
-                    <div class="prof__track"><div class="prof__fill" data-fill="80"></div></div>
+                <a class="activity__chart" href="https://github.com/sshubham07" target="_blank" rel="noopener">
+                    <img src="https://ghchart.rshah.org/00e5ff/sshubham07" alt="GitHub contribution chart for sshubham07" loading="lazy">
+                </a>
+                <div class="activity__cards">
+                    <a href="https://github.com/sshubham07" target="_blank" rel="noopener">
+                        <img src="https://streak-stats.demolab.com/?user=sshubham07&amp;theme=tokyonight&amp;hide_border=true&amp;background=14161F&amp;ring=00E5FF&amp;fire=7C5CFF&amp;currStreakLabel=00E5FF" alt="GitHub contribution streak" loading="lazy">
+                    </a>
+                    <a href="https://leetcode.com/u/shubhamkumargupta2_gmail_com/" target="_blank" rel="noopener">
+                        <img src="https://leetcard.jacoblin.cool/shubhamkumargupta2_gmail_com?theme=dark&amp;border=0&amp;radius=10" alt="LeetCode stats" loading="lazy">
+                    </a>
                 </div>
             </div>
         </section>
@@ -239,6 +280,35 @@
                 <h2 class="section__title">Featured Projects</h2>
             </div>
             <div class="projects">
+                <article class="pcard pcard--featured reveal">
+                    <div class="pcard__top">
+                        <span class="pcard__badge"><i class="fas fa-star"></i> Featured · GenAI</span>
+                        <a href="https://github.com/sshubham07/anuchhed-ai" target="_blank" rel="noopener" class="pcard__link" aria-label="NyayaAI source"><i class="fab fa-github"></i></a>
+                    </div>
+                    <div class="pcard__featured-body">
+                        <div>
+                            <h3 class="pcard__title"><i class="fas fa-scale-balanced pcard__icon"></i> NyayaAI</h3>
+                            <p class="pcard__desc">A production-oriented GenAI assistant for the Constitution of India: conversational RAG with Article-level citations. Hybrid search (pgvector + full-text) with RRF fusion and cross-encoder reranking, a small-LLM router, a fixed LangGraph pipeline, SSE streaming, and an evaluation harness whose gates block merges.</p>
+                            <div class="pcard__tags">
+                                <span>LangGraph</span><span>RAG</span><span>FastAPI</span><span>pgvector</span><span>Postgres</span><span>LiteLLM</span><span>bge-m3</span>
+                            </div>
+                            <div class="pcard__actions">
+                                <a href="https://github.com/sshubham07/anuchhed-ai#-demo" target="_blank" rel="noopener" class="btn btn--primary btn--sm"><i class="fas fa-play"></i> Watch demo</a>
+                                <a href="writing/nyayaai-retrieval.html" class="btn btn--ghost btn--sm"><i class="fas fa-pen-nib"></i> Read the write-up</a>
+                            </div>
+                        </div>
+                        <div class="pcard__metrics">
+                            <div class="metric"><span class="metric__num">0.93</span><span class="metric__label">Recall@5 · MRR@10</span></div>
+                            <div class="metric"><span class="metric__num">76 ms</span><span class="metric__label">Retrieval p50</span></div>
+                            <div class="metric"><span class="metric__num">506/506</span><span class="metric__label">Articles validated</span></div>
+                        </div>
+                    </div>
+                    <figure class="pcard__diagram">
+                        <a href="images/nyayaai-architecture.svg" target="_blank" rel="noopener"><img src="images/nyayaai-architecture.svg" alt="NyayaAI architecture: PDF is chunked and stored in pgvector; a question from the web UI goes through the chat API, router, hybrid search with reranker, and the answer LLM" loading="lazy"></a>
+                        <figcaption>Architecture at a glance: ingestion → pgvector, then router → hybrid search + rerank → answer LLM</figcaption>
+                    </figure>
+                </article>
+
                 <article class="pcard reveal">
                     <div class="pcard__top">
                         <i class="fas fa-comments pcard__icon"></i>
@@ -263,17 +333,6 @@
                     </div>
                 </article>
 
-                <article class="pcard reveal">
-                    <div class="pcard__top">
-                        <i class="fas fa-check-double pcard__icon"></i>
-                        <a href="https://github.com/sshubham07/FastApi" target="_blank" rel="noopener" class="pcard__link" aria-label="FastAPI Todo source"><i class="fab fa-github"></i></a>
-                    </div>
-                    <h3 class="pcard__title">FastAPI Todo</h3>
-                    <p class="pcard__desc">Full-stack Todo service with JWT authentication, complete CRUD operations and a tested API layer.</p>
-                    <div class="pcard__tags">
-                        <span>FastAPI</span><span>JWT</span><span>Pytest</span>
-                    </div>
-                </article>
             </div>
         </section>
 
@@ -289,31 +348,108 @@
                     <div class="tl-item__card">
                         <div class="tl-item__meta"><span class="tl-item__role">Software Development Engineer 2</span><span class="tl-item__date">Feb 2026 — Present</span></div>
                         <div class="tl-item__co">Gruve.ai</div>
-                        <p>Deployed on <strong>Pulse AI</strong> — an AI-powered platform that turns operational signals into real-time, actionable intelligence. Build and scale the async, event-driven backend services that power its insight pipeline.</p>
+                        <p>Backend services for <strong>PulseAI Platform</strong>, an on-prem, Kubernetes-native <strong>multi-tenant GPU management platform</strong> built on FastAPI microservices and PostgreSQL, serving GPU resources across tenant departments.</p>
+                        <ul class="tl-item__points">
+                            <li>Engineered Kubernetes <strong>namespace provisioning</strong> and <strong>GPU quota enforcement</strong> for strict multi-tenant isolation, automating per-department namespaces, resource quotas and <strong>RBAC bindings</strong> against the production cluster.</li>
+                            <li>Designed and built the <strong>Observability microservice</strong> and <strong>Audit Log Viewer</strong> from the ground up: a schema-isolated, RBAC-secured FastAPI service powering searchable, filterable, paginated audit trails for compliance and debugging.</li>
+                            <li>Shipped every feature as a complete vertical slice (<strong>PostgreSQL → API → Kubernetes → UI</strong>) as a full-stack owner, protecting release quality with <strong>9+ Playwright end-to-end suites</strong> plus unit and integration tests.</li>
+                        </ul>
+                        <div class="sysflow" role="img" aria-label="PulseAI: Web UI to FastAPI microservices to PostgreSQL; provisioning to Kubernetes namespaces, GPU quotas and RBAC; observability service to audit log viewer">
+                            <span class="sysflow__label">// system view (simplified)</span>
+                            <div class="sysflow__row"><span class="sysflow__node">Web UI</span><span class="sysflow__edge"></span><span class="sysflow__node sysflow__node--hot">FastAPI microservices</span><span class="sysflow__edge"></span><span class="sysflow__node">PostgreSQL</span></div>
+                            <div class="sysflow__row"><span class="sysflow__node">Provisioning</span><span class="sysflow__edge"></span><span class="sysflow__node sysflow__node--hot">K8s namespaces · GPU quotas · RBAC</span></div>
+                            <div class="sysflow__row"><span class="sysflow__node">Observability svc</span><span class="sysflow__edge"></span><span class="sysflow__node sysflow__node--hot">Audit Log Viewer</span></div>
+                        </div>
+                        <div class="tl-item__stack"><span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>Kubernetes</span><span>Docker</span><span>Playwright</span></div>
                     </div>
                 </div>
+
                 <div class="tl-item reveal">
                     <div class="tl-item__dot"></div>
                     <div class="tl-item__card">
                         <div class="tl-item__meta"><span class="tl-item__role">Backend Developer</span><span class="tl-item__date">Jun 2024 — Feb 2026</span></div>
                         <div class="tl-item__co">Codvo.ai</div>
-                        <p>Led root-cause analysis for customer issues in the purchase flow using AWS CloudWatch, identifying and shipping effective fixes for production-critical services.</p>
+                        <p>Core backend contributor on <strong>Katapult.com</strong>, a large-scale lease-to-own and flexible payment financing platform integrated with merchants such as <strong>Amazon</strong> and <strong>Walmart</strong>.</p>
+                        <ul class="tl-item__points">
+                            <li>Built Django services for end-to-end <strong>purchase financing workflows</strong>: customer onboarding, transaction validation, repayment schedules and interest calculations.</li>
+                            <li>Designed secure <strong>REST APIs for real-time payment authorizations</strong>, where Katapult pays merchants upfront and customers repay in instalments.</li>
+                            <li>Built logic to track <strong>loan lifecycle states</strong> (approval, disbursement, repayment, defaults, closures) with data consistency and auditability.</li>
+                            <li>Developed <strong>Celery/Redis background jobs</strong> for repayment reminders, status reconciliation and batch financial updates.</li>
+                            <li>Integrated <strong>AWS S3</strong> for secure document storage and used <strong>CloudWatch</strong> for centralised logging, monitoring and root-cause analysis of production issues.</li>
+                        </ul>
+                        <div class="sysflow" role="img" aria-label="Katapult: merchants to Django REST APIs to PostgreSQL; Celery and Redis jobs for reminders and reconciliation; S3 and CloudWatch">
+                            <span class="sysflow__label">// system view (simplified)</span>
+                            <div class="sysflow__row"><span class="sysflow__node">Amazon · Walmart checkout</span><span class="sysflow__edge"></span><span class="sysflow__node sysflow__node--hot">Django REST APIs</span><span class="sysflow__edge"></span><span class="sysflow__node">PostgreSQL</span></div>
+                            <div class="sysflow__row"><span class="sysflow__node">Celery + Redis jobs</span><span class="sysflow__edge"></span><span class="sysflow__node sysflow__node--hot">Reminders · reconciliation</span></div>
+                            <div class="sysflow__row"><span class="sysflow__node">AWS S3 documents</span><span class="sysflow__edge"></span><span class="sysflow__node sysflow__node--hot">CloudWatch logs</span></div>
+                        </div>
+                        <div class="tl-item__stack"><span>Python</span><span>Django</span><span>REST APIs</span><span>Celery</span><span>Redis</span><span>PostgreSQL</span><span>AWS S3</span><span>CloudWatch</span></div>
                     </div>
                 </div>
+
                 <div class="tl-item reveal">
                     <div class="tl-item__dot"></div>
                     <div class="tl-item__card">
                         <div class="tl-item__meta"><span class="tl-item__role">Software Engineer</span><span class="tl-item__date">Oct 2023 — May 2024</span></div>
                         <div class="tl-item__co">Advarisk</div>
-                        <p>Drove the 'Advasmart' project, digitizing real-estate collateral processes for banks and streamlining verification workflows.</p>
+                        <p>Built scalable backend services for <strong>Advasmart</strong>, a fintech platform digitising real-estate collateral processes for multiple banking clients.</p>
+                        <ul class="tl-item__points">
+                            <li>Built Django &amp; Flask APIs that process <strong>large Excel uploads asynchronously</strong> with Celery and Redis, keeping APIs non-blocking and background processing reliable.</li>
+                            <li>Designed <strong>adaptable parsing and validation pipelines</strong> for each bank&#39;s Excel format, with strict business-rule checks and error reports for failed or mismatched records.</li>
+                            <li>Implemented safeguards against <strong>duplicate re-processing</strong> and kept state transitions <strong>audit-compliant</strong> to meet regulatory requirements.</li>
+                            <li><strong>Second Prize</strong> winner at Advarisk&#39;s internal hackathon (Advathon).</li>
+                        </ul>
+                        <div class="tl-item__stack"><span>Python</span><span>Django</span><span>Flask</span><span>Celery</span><span>Redis</span><span>Pandas</span><span>MySQL</span></div>
                     </div>
                 </div>
+
                 <div class="tl-item reveal">
                     <div class="tl-item__dot"></div>
                     <div class="tl-item__card">
                         <div class="tl-item__meta"><span class="tl-item__role">Trainee Developer</span><span class="tl-item__date">Oct 2022 — Sep 2023</span></div>
                         <div class="tl-item__co">Velocis Systems</div>
-                        <p>Built an internal tool to monitor employee software installations and automate email alerting, reducing manual audits.</p>
+                        <p>Built internal tooling for compliance monitoring and automated reporting.</p>
+                        <ul class="tl-item__points">
+                            <li>Designed and shipped a <strong>Flask-based compliance monitoring system</strong> with Celery/Redis scheduled jobs and real-time dashboards, improving visibility into policy violations and software usage.</li>
+                            <li>Integrated <strong>real-time Zulip alerting</strong> and automated daily email notifications for <strong>300+ employees</strong>, cutting manual reporting effort by <strong>30%</strong>.</li>
+                        </ul>
+                        <div class="tl-item__stack"><span>Python</span><span>Flask</span><span>Celery</span><span>Redis</span><span>Zulip API</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education & Achievements -->
+        <section id="education" class="section">
+            <div class="section__head reveal">
+                <span class="section__index">05</span>
+                <h2 class="section__title">Education &amp; Achievements</h2>
+            </div>
+            <div class="edu">
+                <div class="edu__col reveal">
+                    <h3 class="edu__heading"><i class="fas fa-graduation-cap"></i> Education</h3>
+                    <div class="edu__card">
+                        <div class="edu__meta"><span class="edu__school">Jawaharlal Nehru University, New Delhi</span><span class="tl-item__date">2021 — 2023</span></div>
+                        <p>Master of Computer Applications (MCA)</p>
+                    </div>
+                    <div class="edu__card">
+                        <div class="edu__meta"><span class="edu__school">St. Xavier&#39;s College of Management &amp; Technology, Patna</span><span class="tl-item__date">2018 — 2021</span></div>
+                        <p>Bachelor of Computer Applications (BCA)</p>
+                    </div>
+                </div>
+                <div class="edu__col reveal">
+                    <h3 class="edu__heading"><i class="fas fa-trophy"></i> Achievements</h3>
+                    <div class="achv">
+                        <span class="achv__icon"><i class="fas fa-medal"></i></span>
+                        <div><strong>Second Prize, Advathon</strong><p>Advarisk&#39;s internal hackathon.</p></div>
+                    </div>
+                    <div class="achv">
+                        <span class="achv__icon"><i class="fas fa-code"></i></span>
+                        <div><strong>1100+ DSA problems solved</strong><p>Across LeetCode, GeeksforGeeks and HackerRank.</p></div>
+                    </div>
+                    <div class="achv">
+                        <span class="achv__icon"><i class="fas fa-ranking-star"></i></span>
+                        <div><strong>Top 2 institute rank on GeeksforGeeks</strong><p>Among 500+ students.</p></div>
                     </div>
                 </div>
             </div>
@@ -322,7 +458,7 @@
         <!-- Coding Profiles -->
         <section id="profiles" class="section">
             <div class="section__head reveal">
-                <span class="section__index">05</span>
+                <span class="section__index">06</span>
                 <h2 class="section__title">Coding Profiles</h2>
             </div>
             <div class="profiles">
@@ -335,7 +471,7 @@
                     <span>GeeksforGeeks</span>
                 </a>
                 <a href="https://www.hackerrank.com/profile/shubhamkumargup2" target="_blank" rel="noopener" class="profile-card reveal">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/hackerrank.svg" alt="" class="profile-card__ico">
+                    <i class="fab fa-hackerrank profile-card__ico profile-card__ico--fa" aria-hidden="true"></i>
                     <span>HackerRank</span>
                 </a>
                 <a href="https://platform.stratascratch.com/user/shubham007" target="_blank" rel="noopener" class="profile-card reveal">
@@ -348,11 +484,11 @@
         <!-- Contact -->
         <section id="contact" class="section">
             <div class="section__head reveal">
-                <span class="section__index">06</span>
+                <span class="section__index">07</span>
                 <h2 class="section__title">Get In Touch</h2>
             </div>
             <div class="contact reveal">
-                <p class="contact__lead">Building something that needs to scale? Let's talk.</p>
+                <p class="contact__lead">Building something that needs to scale, or a GenAI product that needs to ship? Let's talk.</p>
                 <div class="contact__grid">
                     <a href="mailto:shubhamkumargupta2@gmail.com" class="contact__item">
                         <i class="fas fa-envelope"></i><span>Email</span>
@@ -366,7 +502,7 @@
                     <a href="tel:+918825254403" class="contact__item">
                         <i class="fas fa-phone"></i><span>Call</span>
                     </a>
-                    <a href="https://drive.google.com/file/d/1Ub_r9_SZnv_PBY9gSkmfLOwtNbCpjzyK/view" target="_blank" rel="noopener" class="contact__item">
+                    <a href="https://drive.google.com/file/d/19_RhvogvO401x6xOO7PbsNGkXWMxYwpz/view?usp=sharing" target="_blank" rel="noopener" class="contact__item">
                         <i class="fas fa-file-alt"></i><span>Resume</span>
                     </a>
                 </div>
@@ -376,8 +512,22 @@
 
     <footer class="footer">
         <p>Designed &amp; built by <strong>Shubham Kumar Gupta</strong> · <span id="year"></span></p>
-        <p class="footer__note">Backend Engineer · Distributed Systems · GenAI</p>
+        <p class="footer__note">SDE-2 @ Gruve.ai · Distributed Systems · GenAI</p>
     </footer>
+
+    <!-- Command palette (⌘K / Ctrl+K) -->
+    <div class="palette" id="palette" hidden>
+        <div class="palette__backdrop" data-close></div>
+        <div class="palette__box" role="dialog" aria-modal="true" aria-label="Command menu">
+            <div class="palette__search">
+                <i class="fas fa-magnifying-glass"></i>
+                <input id="paletteInput" type="text" placeholder="Jump to a section or action…" autocomplete="off" spellcheck="false">
+                <kbd>esc</kbd>
+            </div>
+            <ul class="palette__list" id="paletteList" role="listbox"></ul>
+            <div class="palette__foot"><span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> open</span></div>
+        </div>
+    </div>
 
     <script src="js/main.js"></script>
 </body>

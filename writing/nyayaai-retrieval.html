@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How NyayaAI Reached 0.93 Recall@5 — Shubham Kumar Gupta</title>
+    <meta name="description" content="Building a citation-grounded RAG system for the Constitution of India: structure-aware chunking, hybrid search, reranking, and evaluation gates that block merges.">
+    <meta name="theme-color" content="#0a0b0f">
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://sshubham07.github.io/writing/nyayaai-retrieval.html">
+    <meta property="og:title" content="How NyayaAI reached 0.93 Recall@5">
+    <meta property="og:description" content="Structure-aware chunking, hybrid search + reranking, and evaluation gates for a Constitution of India RAG system.">
+    <meta property="og:image" content="https://sshubham07.github.io/images/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .post { max-width: 760px; margin: 0 auto; padding: 120px 24px 80px; }
+        .post__back { font-family: var(--mono); font-size: 0.85rem; color: var(--text-mute); display: inline-flex; gap: 8px; align-items: center; margin-bottom: 30px; }
+        .post__back:hover { color: var(--accent); }
+        .post__kicker { font-family: var(--mono); font-size: 0.8rem; color: var(--accent-3); margin-bottom: 14px; }
+        .post h1 { font-family: var(--display); font-size: clamp(2rem, 5vw, 3rem); line-height: 1.1; letter-spacing: -1px; margin-bottom: 16px; }
+        .post__lede { font-size: 1.12rem; color: var(--text-dim); margin-bottom: 26px; }
+        .post__meta { font-family: var(--mono); font-size: 0.78rem; color: var(--text-mute); padding-bottom: 26px; border-bottom: 1px solid var(--border); margin-bottom: 34px; }
+        .post h2 { font-family: var(--display); font-size: 1.5rem; margin: 44px 0 14px; }
+        .post h2 span { font-family: var(--mono); font-size: 0.9rem; color: var(--accent); margin-right: 10px; }
+        .post p, .post li { color: var(--text-dim); margin-bottom: 14px; }
+        .post ul { padding-left: 22px; margin-bottom: 14px; }
+        .post code { font-family: var(--mono); font-size: 0.85em; color: var(--accent); background: rgba(0, 229, 255, 0.08); padding: 2px 6px; border-radius: 5px; }
+        .post a:not(.post__back):not(.btn) { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+        .post figure { margin: 24px 0; }
+        .post figure img { width: 100%; background: #fff; border-radius: var(--radius-sm); padding: 12px; display: block; }
+        .post figcaption { font-family: var(--mono); font-size: 0.72rem; color: var(--text-mute); margin-top: 8px; }
+        .table-wrap { overflow-x: auto; margin: 20px 0; border: 1px solid var(--border); border-radius: var(--radius-sm); }
+        .post table { width: 100%; border-collapse: collapse; font-size: 0.86rem; min-width: 520px; }
+        .post th, .post td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+        .post th { font-family: var(--mono); font-size: 0.74rem; color: var(--text-mute); font-weight: 500; background: var(--surface); }
+        .post td { color: var(--text-dim); }
+        .post tr:last-child td { border-bottom: 0; }
+        .post td.num { font-family: var(--mono); }
+        .post tr.hl td { color: #fff; background: rgba(0, 229, 255, 0.06); }
+        .post td.ok { color: var(--accent-3); } .post td.bad { color: #ff6b81; }
+        .callout { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: var(--radius-sm); padding: 16px 20px; margin: 22px 0; }
+        .callout p { margin: 0; }
+        @media (max-width: 640px) {
+            .nav__links--static { position: static; flex-direction: row; opacity: 1; transform: none; pointer-events: auto; background: none; border: 0; padding: 0; backdrop-filter: none; }
+        }
+        .post__end { margin-top: 50px; padding-top: 28px; border-top: 1px solid var(--border); display: flex; gap: 12px; flex-wrap: wrap; }
+    </style>
+</head>
+<body>
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="bg-orb bg-orb--1" aria-hidden="true"></div>
+    <div class="bg-orb bg-orb--2" aria-hidden="true"></div>
+
+    <header class="nav is-scrolled">
+        <div class="nav__inner">
+            <a href="../index.html" class="nav__brand"><span class="nav__brand-bracket">&lt;</span>SKG<span class="nav__brand-bracket">/&gt;</span></a>
+            <nav class="nav__links nav__links--static">
+                <a href="../index.html#projects" class="nav__link">Projects</a>
+                <a href="../index.html#contact" class="nav__link nav__link--cta">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <article class="post">
+        <a href="../index.html#projects" class="post__back"><i class="fas fa-arrow-left"></i> back to portfolio</a>
+        <div class="post__kicker">// case study · GenAI · RAG</div>
+        <h1>How NyayaAI reached 0.93 Recall@5</h1>
+        <p class="post__lede">Building a citation-grounded RAG assistant for the Constitution of India: structure-aware chunking, hybrid search with reranking, and evaluation gates that decide what ships.</p>
+        <div class="post__meta">Shubham Kumar Gupta · <a href="https://github.com/sshubham07/anuchhed-ai" target="_blank" rel="noopener">source on GitHub</a></div>
+
+        <p>Legal questions punish a RAG system that is only roughly right. If someone asks about the right to education, an answer that cites Article 21 instead of Article 21-A is wrong, however fluent it sounds. So I built NyayaAI around three ideas: <strong>measure retrieval</strong>, <strong>handle failure explicitly</strong>, and <strong>attribute every claim to an Article</strong>.</p>
+
+        <figure>
+            <img src="../images/nyayaai-architecture.svg" alt="NyayaAI architecture: the PDF is chunked and stored in pgvector; questions go through the chat API, router, hybrid search with reranker and answer LLM">
+            <figcaption>One Postgres, no agent loop, no LangChain retrievers.</figcaption>
+        </figure>
+
+        <h2><span>01</span>Chunk by the document's own structure</h2>
+        <p>Fixed-size windows cut Articles in half and mix neighbouring provisions. Instead, NyayaAI makes <strong>one chunk per Article</strong> and splits only long Articles, at clause boundaries. All <strong>506 of 506</strong> Articles in the Contents list are found, with no duplicates or gaps, and no chunk exceeds the 1,024-token limit. A full ingest takes about two minutes, and re-ingesting the same PDF is a no-op.</p>
+        <p>The real PDF had its share of surprises, and each fix is pinned by a test:</p>
+        <ul>
+            <li>Headings are <strong>not bold</strong>, so they are detected by centred position.</li>
+            <li>The Contents say <code>243-I</code> while the body says <code>243I</code>, so both are normalised.</li>
+            <li>Part VII is omitted entirely, so Article 238 gets a stub chunk ("Omitted." plus the amendment note) rather than silently disappearing.</li>
+            <li>A footnote is numbered <code>2.</code> twice (a typo), so footnotes are numbered by position.</li>
+        </ul>
+
+        <h2><span>02</span>Hybrid search, then rerank</h2>
+        <p>Each query runs a dense vector search (bge-m3 embeddings in pgvector) and a Postgres full-text search. The two lists are fused with Reciprocal Rank Fusion, and a cross-encoder (bge-reranker-v2-m3) reorders the candidates. Exact lookups like "Art. 21-A" are pinned, so they never depend on similarity scores.</p>
+        <p>The ablation shows which piece earns its keep:</p>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Variant</th><th>Recall@5</th><th>MRR@10</th><th>nDCG@5</th><th>Cand. recall@15</th></tr></thead>
+                <tbody>
+                    <tr><td>Dense only</td><td class="num">0.889</td><td class="num">0.846</td><td class="num">0.802</td><td class="num">0.972</td></tr>
+                    <tr><td>Full-text only</td><td class="num">0.625</td><td class="num">0.563</td><td class="num">0.516</td><td class="num">0.486</td></tr>
+                    <tr><td>Hybrid (RRF)</td><td class="num">0.778</td><td class="num">0.707</td><td class="num">0.664</td><td class="num">0.875</td></tr>
+                    <tr class="hl"><td>Hybrid + rerank (current)</td><td class="num">0.931</td><td class="num">0.931</td><td class="num">0.877</td><td class="num">0.875</td></tr>
+                    <tr><td>Dense + rerank</td><td class="num">0.958</td><td class="num">0.962</td><td class="num">0.911</td><td class="num">0.972</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p>The reranker adds the most, taking Recall@5 from 0.778 to 0.931. The honest surprise is the last row: on this set, <strong>dense + rerank beats the current hybrid setup</strong>. Whether to keep the full-text leg is an open decision, recorded in an ADR rather than settled by gut feel.</p>
+
+        <h2><span>03</span>Evaluation gates, not vibes</h2>
+        <p>A golden Q&amp;A set with a dev/test split drives everything. <code>make eval-retrieval</code> reports Recall@k, MRR, nDCG, candidate recall and latency, and the gates block merges:</p>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Metric</th><th>Value</th><th>Gate</th><th>Status</th></tr></thead>
+                <tbody>
+                    <tr><td>Recall@5</td><td class="num">0.931</td><td class="num">≥ 0.90</td><td class="ok">pass</td></tr>
+                    <tr><td>MRR@10</td><td class="num">0.931</td><td class="num">≥ 0.75</td><td class="ok">pass</td></tr>
+                    <tr><td>Hit@1 (Article lookups)</td><td class="num">1.000</td><td class="num">= 1.00</td><td class="ok">pass</td></tr>
+                    <tr><td>Retrieval latency p95</td><td class="num">95 ms</td><td class="num">≤ 300 ms</td><td class="ok">pass</td></tr>
+                    <tr><td>Candidate recall@15</td><td class="num">0.875</td><td class="num">≥ 0.95</td><td class="bad">open</td></tr>
+                    <tr><td>Rerank latency p95</td><td class="num">4,846 ms</td><td class="num">≤ 800 ms</td><td class="bad">open</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p>Two gates still fail, so the baseline isn't promoted yet. Writing that down matters more than a headline number. The misses are instructive too: "supreme commander of the armed forces" misses Article 53 because the text says "supreme command of the Defence Forces", and Article 300A gets crowded out by 31A–31D.</p>
+
+        <h2><span>04</span>One router call, one answer call</h2>
+        <p>NyayaAI is a <strong>fixed LangGraph pipeline, not an agent</strong>. A small LLM rewrites the question, extracts Article references and picks a route (<code>article_lookup</code>, <code>simple</code>, <code>conceptual</code>, <code>multi_part</code>, or a canned reply for ambiguous, out-of-scope and chit-chat messages). A large LLM then answers <em>only</em> from the retrieved, numbered excerpts. Conceptual questions use a HyDE passage for the vector search, and multi-part questions run one search per sub-question.</p>
+
+        <h2><span>05</span>Guards that keep answers honest</h2>
+        <ul>
+            <li><strong>Hallucinated citations:</strong> any <code>[Art. N]</code> that isn't among the retrieved chunks is stripped and logged.</li>
+            <li><strong>Nothing found:</strong> no answer LLM call at all, just a "not covered" reply.</li>
+            <li><strong>Weak match:</strong> the prompt is told retrieval is weak and must say so.</li>
+            <li><strong>Prompt injection:</strong> excerpts and user text are treated as data; "ignore your rules" is routed to out-of-scope.</li>
+            <li><strong>Provider failure:</strong> one retry, then a fallback model, then a clean <code>LLM_UNAVAILABLE</code>. Every attempt is one row in <code>llm_calls</code>, and every stage logs the same <code>request_id</code>.</li>
+        </ul>
+
+        <div class="callout"><p><strong>Takeaway:</strong> the biggest gains came from the reranker and from respecting the document's structure. The most useful habit was letting the evaluation harness, not intuition, decide what stays.</p></div>
+
+        <div class="post__end">
+            <a href="https://github.com/sshubham07/anuchhed-ai" target="_blank" rel="noopener" class="btn btn--primary btn--sm"><i class="fab fa-github"></i> View the code</a>
+            <a href="../index.html#contact" class="btn btn--ghost btn--sm"><i class="fas fa-paper-plane"></i> Get in touch</a>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <p>Designed &amp; built by <strong>Shubham Kumar Gupta</strong></p>
+        <p class="footer__note">SDE-2 @ Gruve.ai · Distributed Systems · GenAI</p>
+    </footer>
+</body>
+</html>
