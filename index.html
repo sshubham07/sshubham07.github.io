@@ -358,21 +358,24 @@
                 <div class="tl-item reveal">
                     <div class="tl-item__dot"></div>
                     <div class="tl-item__card">
-                        <div class="tl-item__meta"><span class="tl-item__role">Software Development Engineer 2</span><span class="tl-item__date">Feb 2026 — Present</span></div>
+                        <div class="tl-item__meta"><span class="tl-item__role">Python Software Engineer</span><span class="tl-item__date">Feb 2026 — Sep 2026</span></div>
                         <div class="tl-item__co">Gruve.ai</div>
-                        <p>Backend services for <strong>PulseAI Platform</strong>, an on-prem, Kubernetes-native <strong>multi-tenant GPU management platform</strong> built on FastAPI microservices and PostgreSQL, serving GPU resources across tenant departments.</p>
+                        <p>Built a <strong>conversational document RAG assistant</strong> over enterprise PDF manuals, and FastAPI microservices for <strong>PulseAI</strong>, a <strong>multi-tenant GPU management platform</strong>.</p>
                         <ul class="tl-item__points">
-                            <li>Engineered Kubernetes <strong>namespace provisioning</strong> and <strong>GPU quota enforcement</strong> for strict multi-tenant isolation, automating per-department namespaces, resource quotas and <strong>RBAC bindings</strong> against the production cluster.</li>
-                            <li>Designed and built the <strong>Observability microservice</strong> and <strong>Audit Log Viewer</strong> from the ground up: a schema-isolated, RBAC-secured FastAPI service powering searchable, filterable, paginated audit trails for compliance and debugging.</li>
-                            <li>Shipped every feature as a complete vertical slice (<strong>PostgreSQL → API → Kubernetes → UI</strong>) as a full-stack owner, protecting release quality with <strong>9+ Playwright end-to-end suites</strong> plus unit and integration tests.</li>
+                            <li>Developed the RAG assistant&#39;s <strong>ingestion pipeline</strong> to parse PDFs, <strong>chunk them section-wise</strong> by headings and generate <strong>embeddings</strong>.</li>
+                            <li>Implemented <strong>hybrid search</strong> (vector + keyword) in <strong>Pinecone</strong> for top-50 candidates, re-ranked with <strong>Cohere Rerank</strong> and answered by <strong>Claude on AWS Bedrock</strong>.</li>
+                            <li>Designed <strong>conversation memory</strong> in PostgreSQL (last 5 turns verbatim, older turns <strong>summarized</strong>) and evaluated answers on a <strong>34-case golden dataset</strong>.</li>
+                            <li>Engineered <strong>FastAPI microservices</strong> (Pydantic, SQLAlchemy, PostgreSQL) for PulseAI, served by <strong>Gunicorn with Uvicorn workers</strong> in Docker.</li>
+                            <li>Designed and built the <strong>Observability / Audit Log microservice</strong> end-to-end: schema-isolated, RBAC-secured, with search, filters and pagination.</li>
+                            <li>Wrote <strong>PyTest</strong> unit and integration tests with mocking and <strong>code-coverage gates</strong>, plus <strong>9+ Playwright E2E suites</strong>, run in <strong>GitHub Actions</strong> CI.</li>
                         </ul>
-                        <div class="sysflow" role="img" aria-label="PulseAI: Web UI to FastAPI microservices to PostgreSQL; provisioning to Kubernetes namespaces, GPU quotas and RBAC; observability service to audit log viewer">
+                        <div class="sysflow" role="img" aria-label="RAG assistant: PDF manuals are chunked and embedded into Pinecone hybrid search, re-ranked by Cohere Rerank and answered by Claude on AWS Bedrock. PulseAI: FastAPI microservices on PostgreSQL, with an observability service feeding the audit log">
                             <span class="sysflow__label">// system view (simplified)</span>
-                            <div class="sysflow__row"><span class="sysflow__node">Web UI</span><span class="sysflow__edge"></span><span class="sysflow__node sysflow__node--hot">FastAPI microservices</span><span class="sysflow__edge"></span><span class="sysflow__node">PostgreSQL</span></div>
-                            <div class="sysflow__row"><span class="sysflow__node">Provisioning</span><span class="sysflow__edge"></span><span class="sysflow__node sysflow__node--hot">K8s namespaces · GPU quotas · RBAC</span></div>
-                            <div class="sysflow__row"><span class="sysflow__node">Observability svc</span><span class="sysflow__edge"></span><span class="sysflow__node sysflow__node--hot">Audit Log Viewer</span></div>
+                            <div class="sysflow__row"><span class="sysflow__node">PDF manuals</span><span class="sysflow__edge"></span><span class="sysflow__node">Chunk · embed</span><span class="sysflow__edge"></span><span class="sysflow__node sysflow__node--hot">Pinecone hybrid search</span></div>
+                            <div class="sysflow__row"><span class="sysflow__node">Top-50 candidates</span><span class="sysflow__edge"></span><span class="sysflow__node">Cohere Rerank</span><span class="sysflow__edge"></span><span class="sysflow__node sysflow__node--hot">Claude on AWS Bedrock</span></div>
+                            <div class="sysflow__row"><span class="sysflow__node">PulseAI · FastAPI microservices</span><span class="sysflow__edge"></span><span class="sysflow__node">PostgreSQL</span><span class="sysflow__edge"></span><span class="sysflow__node sysflow__node--hot">Observability · Audit Log</span></div>
                         </div>
-                        <div class="tl-item__stack"><span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>Kubernetes</span><span>Docker</span><span>Playwright</span></div>
+                        <div class="tl-item__stack"><span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>Docker</span><span>AWS Bedrock</span><span>Pinecone</span><span>GitHub Actions</span></div>
                     </div>
                 </div>
 
@@ -690,6 +693,6 @@
         </div>
     </div>
 
-    <script src="js/main.js?v=3"></script>
+    <script src="js/main.js?v=4"></script>
 </body>
 </html>

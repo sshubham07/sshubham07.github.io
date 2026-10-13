@@ -298,7 +298,7 @@ skills: () => [
 '<span class="tok-k">data</span>      PostgreSQL · MySQL · AWS (S3, CloudWatch)'
 ],
 experience: () => [
-'<span class="tok-n">2026-</span>      SDE-2, Gruve.ai: multi-tenant GPU platform on K8s',
+'<span class="tok-n">2026</span>       Python Software Engineer, Gruve.ai: document RAG assistant + PulseAI GPU platform',
 '<span class="tok-n">2024-2026</span>  Backend Developer, Codvo.ai: Katapult payment financing',
 '<span class="tok-n">2023-2024</span>  Software Engineer, Advarisk: Advasmart',
 '<span class="tok-n">2022-2023</span>  Trainee Developer, Velocis Systems',
