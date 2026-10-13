@@ -300,8 +300,7 @@ skills: () => [
 experience: () => [
 '<span class="tok-n">2026</span>       Python Software Engineer, Gruve.ai: document RAG assistant + PulseAI GPU platform',
 '<span class="tok-n">2024-2026</span>  Backend Developer, Codvo.ai: Katapult payment financing',
-'<span class="tok-n">2023-2024</span>  Software Engineer, Advarisk: Advasmart',
-'<span class="tok-n">2022-2023</span>  Trainee Developer, Velocis Systems',
+'<span class="tok-n">2023-2024</span>  Junior Software Engineer, Velocis Systems – Advarisk',
 'Run <span class="tok-cmd">cd experience</span> to scroll there.'
 ],
 projects: () => [
