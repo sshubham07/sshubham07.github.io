@@ -30,7 +30,7 @@
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <link rel="stylesheet" href="css/styles.css?v=2">
+    <link rel="stylesheet" href="css/styles.css?v=3">
 </head>
 <body>
     <!-- Animated background layers -->
@@ -85,7 +85,7 @@
             </p>
             <div class="hero__cta reveal">
                 <a href="#projects" class="btn btn--primary"><i class="fas fa-rocket"></i> View Projects</a>
-                <a href="https://drive.google.com/file/d/19_RhvogvO401x6xOO7PbsNGkXWMxYwpz/view?usp=sharing" target="_blank" rel="noopener" class="btn btn--ghost"><i class="fas fa-file-alt"></i> Resume</a>
+                <a href="#resume" data-resume class="btn btn--ghost"><i class="fas fa-file-alt"></i> Resume</a>
             </div>
             <div class="hero__socials reveal">
                 <a href="https://github.com/sshubham07" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
@@ -303,10 +303,22 @@
                             <div class="metric"><span class="metric__num">506/506</span><span class="metric__label">Articles validated</span></div>
                         </div>
                     </div>
-                    <figure class="pcard__diagram">
-                        <a href="images/nyayaai-architecture.svg" target="_blank" rel="noopener"><img src="images/nyayaai-architecture.svg" alt="NyayaAI architecture: PDF is chunked and stored in pgvector; a question from the web UI goes through the chat API, router, hybrid search with reranker, and the answer LLM" loading="lazy"></a>
-                        <figcaption>Architecture at a glance: ingestion → pgvector, then router → hybrid search + rerank → answer LLM</figcaption>
-                    </figure>
+                    <div class="pcard__show">
+                        <figure class="shot">
+                            <div class="shot__bar">
+                                <span class="terminal__dot terminal__dot--red"></span>
+                                <span class="terminal__dot terminal__dot--yellow"></span>
+                                <span class="terminal__dot terminal__dot--green"></span>
+                                <span class="shot__url"><i class="fas fa-lock"></i> nyayaai · ask the constitution</span>
+                            </div>
+                            <a href="images/nyayaai-ui-night.jpg" target="_blank" rel="noopener"><img src="images/nyayaai-ui-night.jpg" alt="NyayaAI chat in night mode answering &quot;What does Article 21 say?&quot; with an Art. 21 citation card quoting the Constitution" width="1280" height="840" loading="lazy"></a>
+                            <figcaption>The app itself: a streamed answer with an Article-level citation card</figcaption>
+                        </figure>
+                        <figure class="pipe">
+                            <a href="images/nyayaai-pipeline.svg" target="_blank" rel="noopener"><img src="images/nyayaai-pipeline.svg" alt="NyayaAI LangGraph pipeline: load_memory, route, then decompose, hyde, retrieve or respond_template, then generate, validate_citations and save_turn" width="640" height="628" loading="lazy"></a>
+                            <figcaption>How a question is answered: one small LLM call routes, one large call answers</figcaption>
+                        </figure>
+                    </div>
                 </article>
 
                 <article class="pcard reveal">
@@ -499,10 +511,10 @@
                     <a href="https://github.com/sshubham07" target="_blank" rel="noopener" class="contact__item">
                         <i class="fab fa-github"></i><span>GitHub</span>
                     </a>
-                    <a href="tel:+918825254403" class="contact__item">
-                        <i class="fas fa-phone"></i><span>Call</span>
+                    <a href="tel:+918825254403" class="contact__item contact__item--phone" data-phone aria-label="Phone: +91 88252 54403">
+                        <i class="fas fa-phone"></i><span class="phone"><span class="phone__label">Call</span><span class="phone__num">+91 88252 54403</span></span>
                     </a>
-                    <a href="https://drive.google.com/file/d/19_RhvogvO401x6xOO7PbsNGkXWMxYwpz/view?usp=sharing" target="_blank" rel="noopener" class="contact__item">
+                    <a href="#resume" data-resume class="contact__item">
                         <i class="fas fa-file-alt"></i><span>Resume</span>
                     </a>
                 </div>
@@ -514,6 +526,155 @@
         <p>Designed &amp; built by <strong>Shubham Kumar Gupta</strong> · <span id="year"></span></p>
         <p class="footer__note">SDE-2 @ Gruve.ai · Distributed Systems · GenAI</p>
     </footer>
+
+    <!-- Resume viewer -->
+    <div class="resume" id="resume" hidden>
+        <div class="resume__backdrop" data-resume-close></div>
+        <div class="resume__win" role="dialog" aria-modal="true" aria-labelledby="resumeName">
+            <div class="terminal__bar resume__bar">
+                <span class="terminal__dot terminal__dot--red"></span>
+                <span class="terminal__dot terminal__dot--yellow"></span>
+                <span class="terminal__dot terminal__dot--green"></span>
+                <span class="terminal__title">shubham@portfolio:~/resume</span>
+                <button class="resume__close" id="resumeClose" data-resume-close aria-label="Close resume"><kbd>esc</kbd></button>
+            </div>
+            <nav class="resume__tabs" id="resumeTabs" aria-label="Resume sections">
+                <button data-rs="rs-summary" class="is-active">summary.md</button>
+                <button data-rs="rs-skills">skills.yml</button>
+                <button data-rs="rs-experience">experience.log</button>
+                <button data-rs="rs-projects">projects/</button>
+                <button data-rs="rs-education">education.txt</button>
+            </nav>
+            <div class="resume__body" id="resumeBody">
+                <header class="rs-head">
+                    <div>
+                        <h2 class="rs-head__name" id="resumeName">Shubham Kumar Gupta</h2>
+                        <p class="rs-head__role">Python Backend Developer <span>(RAG / GenAI)</span></p>
+                    </div>
+                    <div class="rs-head__flags">
+                        <span class="rs-flag rs-flag--live"><span class="hero__badge-dot"></span> Immediate joiner</span>
+                        <span class="rs-flag">Open to relocation</span>
+                    </div>
+                    <div class="rs-head__links">
+                        <a href="mailto:shubhamkumargupta2@gmail.com"><i class="fas fa-envelope"></i> shubhamkumargupta2@gmail.com</a>
+                        <a href="tel:+918825254403" class="rs-phone" data-phone aria-label="Phone: +91 88252 54403"><i class="fas fa-phone"></i> <span class="phone"><span class="phone__label">Phone · hover to reveal</span><span class="phone__num">+91 88252 54403</span></span></a>
+                        <a href="https://github.com/sshubham07" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="https://www.linkedin.com/in/shubham-kumar-gupta-25a028182/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    </div>
+                </header>
+
+                <section class="rs" id="rs-summary">
+                    <h3 class="rs__cmd"><span class="tok-c">$</span> <span class="tok-cmd">cat</span> summary.md</h3>
+                    <p class="rs__lead"><strong>3.5 years</strong> of experience building <strong>FastAPI / Django microservices</strong>, <strong>REST APIs</strong> and <strong>RAG pipelines</strong> using <strong>PostgreSQL, Redis, Kafka, Docker and AWS</strong>, across fintech and multi-tenant platforms. Strong in <strong>System Design (LLD/HLD)</strong>, <strong>PyTest</strong>-driven testing and <strong>CI/CD</strong>; solved <strong>1100+ DSA problems</strong>.</p>
+                    <div class="rs-stats">
+                        <div><b>3.5</b><span>years</span></div>
+                        <div><b>3</b><span>companies</span></div>
+                        <div><b>1100+</b><span>DSA problems</span></div>
+                        <div><b>9+</b><span>E2E suites</span></div>
+                    </div>
+                </section>
+
+                <section class="rs" id="rs-skills">
+                    <h3 class="rs__cmd"><span class="tok-c">$</span> <span class="tok-cmd">cat</span> skills.yml</h3>
+                    <dl class="rs-skills">
+                        <dt>languages</dt>
+                        <dd><span>Python</span><span>SQL</span><span>Bash</span><span>JavaScript</span></dd>
+                        <dt>backend</dt>
+                        <dd><span>FastAPI</span><span>Django</span><span>Django REST Framework</span><span>Flask</span><span>Pydantic</span><span>SQLAlchemy</span><span>Celery</span><span>Gunicorn</span><span>Uvicorn</span><span>RESTful Services</span><span>Microservices Architecture</span><span>JWT</span><span>OAuth2</span></dd>
+                        <dt>data_messaging</dt>
+                        <dd><span>PostgreSQL (pgvector)</span><span>MySQL</span><span>MongoDB</span><span>Redis</span><span>Kafka</span><span>RabbitMQ</span></dd>
+                        <dt>cloud_devops</dt>
+                        <dd><span>AWS (EC2, S3, Lambda, CloudWatch, Bedrock)</span><span>Docker</span><span>GitHub Actions</span><span>GitLab CI</span><span>Jenkins</span><span>Linux</span><span>Git</span></dd>
+                        <dt>testing</dt>
+                        <dd><span>PyTest</span><span>Unit / Integration / Functional</span><span>Mocking</span><span>Code Coverage</span><span>TDD</span><span>Playwright</span></dd>
+                        <dt>genai</dt>
+                        <dd><span>RAG</span><span>LangGraph</span><span>Hybrid Search</span><span>Reranking</span><span>Embeddings</span><span>Pinecone</span><span>pgvector</span></dd>
+                        <dt>engineering</dt>
+                        <dd><span>System Design (LLD / HLD)</span><span>Distributed Systems</span><span>Caching</span><span>Load Balancing</span><span>Performance Optimization</span><span>Code Review</span><span>Technical Documentation</span><span>Agile / Scrum</span></dd>
+                    </dl>
+                </section>
+
+                <section class="rs" id="rs-experience">
+                    <h3 class="rs__cmd"><span class="tok-c">$</span> <span class="tok-cmd">git log</span> --career</h3>
+                    <div class="rs-log">
+                        <article class="rs-job">
+                            <div class="rs-job__head">
+                                <span class="rs-job__co">Gruve.ai</span>
+                                <span class="rs-job__role">Python Software Engineer</span>
+                                <span class="rs-job__date">Feb 2026 – Sep 2026</span>
+                            </div>
+                            <div class="tl-item__stack"><span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>Docker</span><span>AWS Bedrock</span><span>Pinecone</span><span>GitHub Actions</span></div>
+                            <ul class="tl-item__points">
+                                <li>Developed a <strong>conversational document RAG assistant</strong> over enterprise PDF manuals; built the <strong>ingestion pipeline</strong> to parse PDFs, <strong>chunk them section-wise</strong> by headings and generate <strong>embeddings</strong>.</li>
+                                <li>Implemented <strong>hybrid search</strong> (vector + keyword) in <strong>Pinecone</strong> for top-50 candidates, re-ranked with <strong>Cohere Rerank</strong>, answered by <strong>Claude on AWS Bedrock</strong>.</li>
+                                <li>Designed <strong>conversation memory</strong> in <strong>PostgreSQL</strong> (last 5 turns verbatim, older turns <strong>summarized</strong>); evaluated answers on a <strong>34-case golden dataset</strong>.</li>
+                                <li>Engineered <strong>FastAPI microservices</strong> (Pydantic, SQLAlchemy, PostgreSQL) for <strong>PulseAI</strong>, a <strong>multi-tenant GPU management platform</strong>, served by <strong>Gunicorn with Uvicorn workers</strong> in <strong>Docker</strong>.</li>
+                                <li>Designed and built the <strong>Observability / Audit Log microservice</strong> end-to-end: schema-isolated, RBAC-secured, with search, filters and pagination.</li>
+                                <li>Wrote <strong>PyTest</strong> unit and integration tests with <strong>mocking</strong> and <strong>code-coverage</strong> gates, plus <strong>9+ Playwright E2E suites</strong>, run in <strong>GitHub Actions</strong> CI.</li>
+                            </ul>
+                        </article>
+                        <article class="rs-job">
+                            <div class="rs-job__head">
+                                <span class="rs-job__co">Codvo.ai</span>
+                                <span class="rs-job__role">Backend Developer II</span>
+                                <span class="rs-job__date">Jun 2024 – Feb 2026</span>
+                            </div>
+                            <div class="tl-item__stack"><span>Python</span><span>Django</span><span>DRF</span><span>Celery</span><span>RabbitMQ</span><span>Redis</span><span>Kafka</span><span>PostgreSQL</span><span>AWS</span><span>Jenkins</span></div>
+                            <ul class="tl-item__points">
+                                <li>Developed <strong>Django / DRF REST APIs</strong> for a fintech platform digitizing real-estate collateral for banks, secured with <strong>JWT / OAuth2</strong>; processed large Excel uploads asynchronously via <strong>Celery</strong> (<strong>RabbitMQ</strong> broker, <strong>Redis</strong> result backend).</li>
+                                <li>Wrote configurable <strong>parsing and validation pipelines</strong> for each bank&#39;s format, with error reports and <strong>idempotency</strong> checks against duplicate re-processing.</li>
+                                <li>Implemented <strong>audit-compliant state transitions</strong> for collateral records, publishing state-change events to <strong>Kafka</strong>; added <strong>Redis caching</strong> and <strong>ORM query optimization</strong>.</li>
+                                <li>Deployed on <strong>AWS EC2</strong> behind a load balancer; used <strong>S3 + Lambda</strong> for document processing and <strong>CloudWatch</strong> for logging and production debugging.</li>
+                                <li>Maintained <strong>Jenkins CI/CD</strong> pipelines with <strong>PyTest</strong> gates; conducted <strong>code reviews</strong>, authored technical docs and worked with product, QA and client teams in <strong>Agile / Scrum</strong>.</li>
+                            </ul>
+                        </article>
+                        <article class="rs-job">
+                            <div class="rs-job__head">
+                                <span class="rs-job__co">Velocis Systems – Advarisk</span>
+                                <span class="rs-job__role">Junior Software Engineer</span>
+                                <span class="rs-job__date">Apr 2023 – May 2024</span>
+                            </div>
+                            <div class="tl-item__stack"><span>Python</span><span>Flask</span><span>Celery</span><span>Redis</span><span>MongoDB</span></div>
+                            <ul class="tl-item__points">
+                                <li>Built a <strong>Flask compliance monitoring system</strong> with <strong>Celery Beat</strong> scheduled jobs (<strong>Redis</strong> broker), storing usage events in <strong>MongoDB</strong> and surfacing <strong>policy violations</strong> on real-time dashboards.</li>
+                                <li>Added <strong>Zulip alerts</strong> for status changes and automated daily emails for <strong>300+ employees</strong>, cutting manual reporting effort by <strong>30%</strong>.</li>
+                            </ul>
+                        </article>
+                    </div>
+                </section>
+
+                <section class="rs" id="rs-projects">
+                    <h3 class="rs__cmd"><span class="tok-c">$</span> <span class="tok-cmd">ls</span> projects/</h3>
+                    <article class="rs-job rs-job--flat">
+                        <div class="rs-job__head">
+                            <span class="rs-job__co">NyayaAI</span>
+                            <span class="rs-job__role">Constitution of India RAG</span>
+                            <a class="rs-job__date" href="https://github.com/sshubham07/anuchhed-ai" target="_blank" rel="noopener"><i class="fab fa-github"></i> source</a>
+                        </div>
+                        <div class="tl-item__stack"><span>Python</span><span>LangGraph</span><span>PostgreSQL (pgvector)</span><span>Claude</span></div>
+                        <ul class="tl-item__points">
+                            <li>Built a PDF <strong>ingestion pipeline</strong> that chunks 450+ pages along <strong>Articles / Parts</strong>, generates <strong>embeddings</strong> and indexes them in <strong>PostgreSQL (pgvector)</strong> for <strong>semantic search</strong>.</li>
+                            <li>Orchestrated retrieve → generate as a <strong>LangGraph</strong> state graph returning <strong>article-cited answers</strong> to reduce hallucination.</li>
+                            <li>Tuned chunk size, overlap and top-k using a <strong>Precision@k / Recall@k / MRR</strong> evaluation harness.</li>
+                        </ul>
+                    </article>
+                </section>
+
+                <section class="rs" id="rs-education">
+                    <h3 class="rs__cmd"><span class="tok-c">$</span> <span class="tok-cmd">cat</span> education.txt achievements.txt</h3>
+                    <div class="rs-edu">
+                        <div><b>MCA</b><span>Jawaharlal Nehru University, New Delhi</span><em>2021 – 2023</em></div>
+                        <div><b>BCA</b><span>St. Xavier&#39;s College, Patna</span><em>2018 – 2021</em></div>
+                    </div>
+                    <ul class="tl-item__points">
+                        <li><strong>2nd Prize</strong>, Advathon hackathon</li>
+                        <li><strong>Top 2</strong> GfG institute rank (500+ students)</li>
+                        <li><a href="https://leetcode.com/u/shubhamkumargupta2_gmail_com/" target="_blank" rel="noopener">LeetCode</a> · <a href="https://www.geeksforgeeks.org/user/shubhamkumargupta2/" target="_blank" rel="noopener">GfG</a> · <a href="https://www.hackerrank.com/profile/shubhamkumargup2" target="_blank" rel="noopener">HackerRank</a></li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </div>
 
     <!-- Command palette (⌘K / Ctrl+K) -->
     <div class="palette" id="palette" hidden>
@@ -529,6 +690,6 @@
         </div>
     </div>
 
-    <script src="js/main.js?v=2"></script>
+    <script src="js/main.js?v=3"></script>
 </body>
 </html>

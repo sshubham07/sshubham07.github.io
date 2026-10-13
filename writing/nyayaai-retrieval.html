@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="../css/styles.css?v=2">
+    <link rel="stylesheet" href="../css/styles.css?v=3">
     <style>
         .post { max-width: 760px; margin: 0 auto; padding: 120px 24px 80px; }
         .post__back { font-family: var(--mono); font-size: 0.85rem; color: var(--text-mute); display: inline-flex; gap: 8px; align-items: center; margin-bottom: 30px; }
@@ -34,7 +34,7 @@
         .post code { font-family: var(--mono); font-size: 0.85em; color: var(--accent); background: rgba(0, 229, 255, 0.08); padding: 2px 6px; border-radius: 5px; }
         .post a:not(.post__back):not(.btn) { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
         .post figure { margin: 24px 0; }
-        .post figure img { width: 100%; background: #fff; border-radius: var(--radius-sm); padding: 12px; display: block; }
+        .post figure img { width: 100%; max-width: 560px; height: auto; margin: 0 auto; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 18px; display: block; }
         .post figcaption { font-family: var(--mono); font-size: 0.72rem; color: var(--text-mute); margin-top: 8px; }
         .table-wrap { overflow-x: auto; margin: 20px 0; border: 1px solid var(--border); border-radius: var(--radius-sm); }
         .post table { width: 100%; border-collapse: collapse; font-size: 0.86rem; min-width: 520px; }
@@ -78,7 +78,7 @@
         <p>Legal questions punish a RAG system that is only roughly right. If someone asks about the right to education, an answer that cites Article 21 instead of Article 21-A is wrong, however fluent it sounds. So I built NyayaAI around three ideas: <strong>measure retrieval</strong>, <strong>handle failure explicitly</strong>, and <strong>attribute every claim to an Article</strong>.</p>
 
         <figure>
-            <img src="../images/nyayaai-architecture.svg" alt="NyayaAI architecture: the PDF is chunked and stored in pgvector; questions go through the chat API, router, hybrid search with reranker and answer LLM">
+            <img src="../images/nyayaai-pipeline.svg" alt="NyayaAI LangGraph pipeline: load_memory, route, then decompose, hyde, retrieve or respond_template, then generate, validate_citations and save_turn" width="640" height="628">
             <figcaption>One Postgres, no agent loop, no LangChain retrievers.</figcaption>
         </figure>
 

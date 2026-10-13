@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 628" role="img" aria-labelledby="t d">
+<title id="t">NyayaAI LangGraph pipeline</title>
+<desc id="d">load_memory, then route. The router picks one branch: multi_part goes to decompose, conceptual goes to hyde then retrieve, lookup and simple go straight to retrieve, and ambiguous, out_of_scope or chitchat go to respond_template. Retrieve and decompose feed generate, then validate_citations, then save_turn. respond_template goes straight to save_turn.</desc>
+<!-- Redrawn from docs/diagrams/langgraph.mmd in sshubham07/anuchhed-ai -->
+<style>
+text { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.node { fill: #1a1d29; stroke: rgba(255,255,255,0.16); stroke-width: 1; }
+.node--hot { stroke: #00e5ff; stroke-opacity: 0.6; }
+.node--warm { stroke: #22e584; stroke-opacity: 0.55; }
+.name { fill: #e7ebf3; font-size: 13px; font-weight: 500; text-anchor: middle; }
+.sub { fill: #6b7488; font-size: 10px; text-anchor: middle; }
+.pill { fill: rgba(0,229,255,0.08); stroke: rgba(0,229,255,0.3); }
+.pill-t { fill: #00e5ff; font-size: 10.5px; text-anchor: middle; }
+.edge { fill: none; stroke: #7c5cff; stroke-width: 1.5; }
+.edge--route { stroke: #00e5ff; stroke-dasharray: 5 5; animation: flow 1.2s linear infinite; }
+.lbl { fill: #00e5ff; font-size: 10px; }
+@keyframes flow { to { stroke-dashoffset: -10; } }
+@media (prefers-reduced-motion: reduce) { .edge--route { animation: none; } }
+</style>
+<defs>
+<marker id="a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 8 4 0 8z" fill="#7c5cff"/></marker>
+<marker id="b" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 8 4 0 8z" fill="#00e5ff"/></marker>
+</defs>
+
+<!-- fixed edges -->
+<path class="edge" marker-end="url(#a)" d="M300 32V60"/>
+<path class="edge" marker-end="url(#a)" d="M300 106V136"/>
+<path class="edge" marker-end="url(#a)" d="M265 292V334"/>
+<path class="edge" marker-end="url(#a)" d="M335 380V422"/>
+<path class="edge" marker-end="url(#a)" d="M85 292V446H128"/>
+<path class="edge" marker-end="url(#a)" d="M250 468V498"/>
+<path class="edge" marker-end="url(#a)" d="M250 544V574"/>
+<path class="edge" marker-end="url(#a)" d="M545 292V598H327"/>
+
+<!-- conditional edges out of the router -->
+<path class="edge edge--route" marker-end="url(#b)" d="M300 182V214H85V246"/>
+<path class="edge edge--route" marker-end="url(#b)" d="M300 182V214H265V246"/>
+<path class="edge edge--route" marker-end="url(#b)" d="M300 182V214H400V334"/>
+<path class="edge edge--route" marker-end="url(#b)" d="M300 182V214H545V246"/>
+<text class="lbl" x="92" y="234">multi_part</text>
+<text class="lbl" x="196" y="234">conceptual</text>
+<text class="lbl" x="407" y="282">lookup /</text>
+<text class="lbl" x="407" y="295">simple</text>
+<text class="lbl" x="545" y="205" text-anchor="end">ambiguous / out_of_scope / chitchat</text>
+
+<!-- nodes -->
+<rect class="pill" x="255" y="8" width="90" height="24" rx="12"/>
+<text class="pill-t" x="300" y="24">question</text>
+
+<rect class="node" x="200" y="62" width="200" height="44" rx="9"/>
+<text class="name" x="300" y="81">load_memory</text>
+<text class="sub" x="300" y="96">session memory for follow-ups</text>
+
+<rect class="node node--hot" x="180" y="138" width="240" height="44" rx="9"/>
+<text class="name" x="300" y="157">route</text>
+<text class="sub" x="300" y="172">1 small LLM call · rewrite + classify</text>
+
+<rect class="node" x="2" y="248" width="166" height="44" rx="9"/>
+<text class="name" x="85" y="267">decompose</text>
+<text class="sub" x="85" y="282">one search per sub-question</text>
+
+<rect class="node" x="190" y="248" width="150" height="44" rx="9"/>
+<text class="name" x="265" y="267">hyde</text>
+<text class="sub" x="265" y="282">hypothetical passage</text>
+
+<rect class="node" x="460" y="248" width="170" height="44" rx="9"/>
+<text class="name" x="545" y="267">respond_template</text>
+<text class="sub" x="545" y="282">canned reply, no search</text>
+
+<rect class="node node--hot" x="210" y="336" width="250" height="44" rx="9"/>
+<text class="name" x="335" y="355">retrieve</text>
+<text class="sub" x="335" y="370">vector + full-text → RRF → rerank</text>
+
+<rect class="node node--hot" x="130" y="424" width="240" height="44" rx="9"/>
+<text class="name" x="250" y="443">generate</text>
+<text class="sub" x="250" y="458">1 large LLM call · only from chunks</text>
+
+<rect class="node node--warm" x="130" y="500" width="240" height="44" rx="9"/>
+<text class="name" x="250" y="519">validate_citations</text>
+<text class="sub" x="250" y="534">drops any [Art. N] not retrieved</text>
+
+<rect class="node" x="175" y="576" width="150" height="44" rx="9"/>
+<text class="name" x="250" y="595">save_turn</text>
+<text class="sub" x="250" y="610">stored for the next turn</text>
+</svg>

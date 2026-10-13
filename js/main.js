@@ -211,7 +211,6 @@ card.style.setProperty('--rx', (-py * 8) + 'deg');
 
 /* ---------- Shared links ---------- */
 const LINKS = {
-resume: 'https://drive.google.com/file/d/19_RhvogvO401x6xOO7PbsNGkXWMxYwpz/view?usp=sharing',
 github: 'https://github.com/sshubham07',
 linkedin: 'https://www.linkedin.com/in/shubham-kumar-gupta-25a028182/',
 leetcode: 'https://leetcode.com/u/shubhamkumargupta2_gmail_com/',
@@ -221,6 +220,54 @@ email: 'shubhamkumargupta2@gmail.com'
 };
 const openUrl = (url) => window.open(url, '_blank', 'noopener');
 const goTo = (id) => { const el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth' }); };
+
+/* ---------- Resume viewer ---------- */
+const resume = document.getElementById('resume');
+const resumeBody = document.getElementById('resumeBody');
+const resumeTabs = resume ? Array.from(resume.querySelectorAll('[data-rs]')) : [];
+let resumeFocus = null;
+const openResume = () => {
+if (!resume || !resume.hidden) return;
+resumeFocus = document.activeElement;
+resume.hidden = false;
+document.documentElement.style.overflow = 'hidden';
+resumeBody.scrollTop = 0;
+document.getElementById('resumeClose').focus({ preventScroll: true });
+};
+const closeResume = () => {
+if (!resume || resume.hidden) return;
+resume.hidden = true;
+document.documentElement.style.overflow = '';
+if (location.hash === '#resume') history.replaceState(null, '', location.pathname + location.search);
+if (resumeFocus) resumeFocus.focus({ preventScroll: true });
+};
+if (resume) {
+document.querySelectorAll('[data-resume]').forEach(el => el.addEventListener('click', (e) => { e.preventDefault(); openResume(); }));
+resume.querySelectorAll('[data-resume-close]').forEach(el => el.addEventListener('click', closeResume));
+document.addEventListener('keydown', (e) => {
+const pal = document.getElementById('palette');
+if (e.key === 'Escape' && !resume.hidden && (!pal || pal.hidden)) closeResume();
+});
+resumeTabs.forEach(tab => tab.addEventListener('click', () => {
+const sec = document.getElementById(tab.dataset.rs);
+if (sec) resumeBody.scrollTo({ top: sec.offsetTop - 14, behavior: prefersReduced ? 'auto' : 'smooth' });
+}));
+resumeBody.addEventListener('scroll', () => {
+const atEnd = resumeBody.scrollTop + resumeBody.clientHeight >= resumeBody.scrollHeight - 4;
+let cur = resumeTabs[0];
+resumeTabs.forEach(tab => { if (document.getElementById(tab.dataset.rs).offsetTop - 60 <= resumeBody.scrollTop) cur = tab; });
+if (atEnd) cur = resumeTabs[resumeTabs.length - 1];
+resumeTabs.forEach(tab => tab.classList.toggle('is-active', tab === cur));
+}, { passive: true });
+if (location.hash === '#resume') openResume();
+}
+
+/* ---------- Phone number: shown on hover, or on first tap ---------- */
+const canHover = window.matchMedia('(hover: hover)').matches;
+document.querySelectorAll('[data-phone]').forEach(el => el.addEventListener('click', (e) => {
+if (!canHover && !el.classList.contains('is-revealed')) e.preventDefault();
+el.classList.add('is-revealed');
+}));
 
 /* ---------- Interactive terminal ---------- */
 const term = document.getElementById('term');
@@ -265,7 +312,7 @@ a('https://github.com/sshubham07/the-midnight-times', 'Midnight Times') + ' asyn
 ],
 education: () => ['MCA, Jawaharlal Nehru University (2021-2023)', 'BCA, St. Xavier\'s College, Patna (2018-2021)'],
 contact: () => ['email     <a href="mailto:' + LINKS.email + '">' + LINKS.email + '</a>', 'linkedin  ' + a(LINKS.linkedin, 'shubham-kumar-gupta'), 'github    ' + a(LINKS.github, 'sshubham07')],
-resume: () => { openUrl(LINKS.resume); return ['Opening resume…']; },
+resume: () => { openResume(); return ['Opening resume…']; },
 github: () => { openUrl(LINKS.github); return ['Opening GitHub…']; },
 linkedin: () => { openUrl(LINKS.linkedin); return ['Opening LinkedIn…']; },
 leetcode: () => { openUrl(LINKS.leetcode); return ['Opening LeetCode…']; },
@@ -332,7 +379,7 @@ const ITEMS = [
 { label: 'Education & achievements', icon: 'fa-graduation-cap', hint: 'section', run: () => goTo('education') },
 { label: 'Coding profiles', icon: 'fa-code', hint: 'section', run: () => goTo('profiles') },
 { label: 'Contact', icon: 'fa-paper-plane', hint: 'section', run: () => goTo('contact') },
-{ label: 'Open resume', icon: 'fa-file-alt', hint: 'link', run: () => openUrl(LINKS.resume) },
+{ label: 'Open resume', icon: 'fa-file-alt', hint: 'view', run: () => openResume() },
 { label: 'Read: How NyayaAI reached 0.93 Recall@5', icon: 'fa-pen-nib', hint: 'write-up', run: () => { window.location.href = LINKS.writeup; } },
 { label: 'NyayaAI on GitHub', icon: 'fa-scale-balanced', hint: 'link', run: () => openUrl(LINKS.nyayaai) },
 { label: 'GitHub profile', icon: 'fa-github', brand: true, hint: 'link', run: () => openUrl(LINKS.github) },
